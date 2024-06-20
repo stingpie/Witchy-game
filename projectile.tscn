@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://c67nouh4xms72"]
+
+[ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_dtge7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xc2gb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dtge7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilgoy"]
+shading_mode = 0
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_o2ihs"]
+
+[sub_resource type="Curve" id="Curve_qyb7a"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jy1lw"]
+curve = SubResource("Curve_qyb7a")
+
+[sub_resource type="Curve" id="Curve_oemov"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghlvj"]
+curve = SubResource("Curve_oemov")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rxwbl"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.5
+inherit_velocity_ratio = 1.0
+directional_velocity_min = -0.1
+directional_velocity_max = 0.1
+directional_velocity_curve = SubResource("CurveXYZTexture_o2ihs")
+orbit_velocity_min = -0.04
+orbit_velocity_max = 0.902
+orbit_velocity_curve = SubResource("CurveTexture_jy1lw")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ghlvj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxetj"]
+shading_mode = 0
+albedo_texture = ExtResource("1_dtge7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_05hmi"]
+material = SubResource("StandardMaterial3D_lxetj")
+size = Vector2(0.05, 0.05)
+
+[node name="Projectile" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.221416, 0, 0, 0, 0.221416, 0, 0, 0, -0.223021, 0, 0, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_xc2gb")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+cast_shadow = 0
+gi_mode = 0
+radius = 0.1
+smooth_faces = false
+material = SubResource("StandardMaterial3D_ilgoy")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.196844, 0, 0, 0, 0.196844, 0, 0, 0, 0.196844, 0, 0, 0)
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+process_material = SubResource("ParticleProcessMaterial_rxwbl")
+draw_pass_1 = SubResource("QuadMesh_05hmi")
