@@ -29,3 +29,5 @@ shape = SubResource("BoxShape3D_jfbhr")
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0.1, 0)
 mesh = SubResource("PlaneMesh_b040w")
 material = SubResource("StandardMaterial3D_vwupw")
+
+[node name="projectiles" type="Node3D" parent="."]

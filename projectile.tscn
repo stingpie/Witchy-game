@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c67nouh4xms72"]
+[gd_scene load_steps=14 format=3 uid="uid://c67nouh4xms72"]
 
 [ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_dtge7"]
+[ext_resource type="Script" path="res://projectile.gd" id="1_wwi8f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xc2gb"]
 animations = [{
@@ -57,22 +58,34 @@ albedo_texture = ExtResource("1_dtge7")
 material = SubResource("StandardMaterial3D_lxetj")
 size = Vector2(0.05, 0.05)
 
-[node name="Projectile" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ylhrs"]
+radius = 0.1
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_wwi8f")
+
+[node name="Projectile" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Projectile"]
 transform = Transform3D(0.221416, 0, 0, 0, 0.221416, 0, 0, 0, -0.223021, 0, 0, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_xc2gb")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Projectile"]
 cast_shadow = 0
 gi_mode = 0
 radius = 0.1
 smooth_faces = false
 material = SubResource("StandardMaterial3D_ilgoy")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Projectile"]
 transform = Transform3D(0.196844, 0, 0, 0, 0.196844, 0, 0, 0, 0.196844, 0, 0, 0)
 visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
 process_material = SubResource("ParticleProcessMaterial_rxwbl")
 draw_pass_1 = SubResource("QuadMesh_05hmi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ylhrs")
