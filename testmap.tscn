@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccl3rym3gjsho"]
+
+[ext_resource type="PackedScene" uid="uid://dabw2ps645n3k" path="res://character.tscn" id="1_k31ka"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfbhr"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b040w"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_heq78"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nkymg"]
+noise = SubResource("FastNoiseLite_heq78")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwupw"]
+albedo_texture = SubResource("NoiseTexture2D_nkymg")
+
+[node name="Testmap" type="Node3D"]
+
+[node name="Node3D" parent="." instance=ExtResource("1_k31ka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42265, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_jfbhr")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0.1, 0)
+mesh = SubResource("PlaneMesh_b040w")
+material = SubResource("StandardMaterial3D_vwupw")
