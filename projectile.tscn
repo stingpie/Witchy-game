@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=3 uid="uid://c67nouh4xms72"]
 
-[ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_dtge7"]
 [ext_resource type="Script" path="res://projectile.gd" id="1_wwi8f"]
+[ext_resource type="Texture2D" uid="uid://b57ltx8ax77bt" path="res://Projectile_Placeholder.png" id="2_6b0rb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xc2gb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dtge7")
+"texture": ExtResource("2_6b0rb")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -49,15 +49,20 @@ orbit_velocity_min = -0.04
 orbit_velocity_max = 0.902
 orbit_velocity_curve = SubResource("CurveTexture_jy1lw")
 gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 5.0
 scale_curve = SubResource("CurveTexture_ghlvj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxetj"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 shading_mode = 0
-albedo_texture = ExtResource("1_dtge7")
+albedo_texture = ExtResource("2_6b0rb")
 
 [sub_resource type="QuadMesh" id="QuadMesh_05hmi"]
 material = SubResource("StandardMaterial3D_lxetj")
-size = Vector2(0.05, 0.05)
+size = Vector2(0.2, 0.2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ylhrs"]
 radius = 0.1
@@ -72,18 +77,21 @@ script = ExtResource("1_wwi8f")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Projectile"]
 transform = Transform3D(0.221416, 0, 0, 0, 0.221416, 0, 0, 0, -0.223021, 0, 0, 0)
+visible = false
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_xc2gb")
+animation = &"new_animation"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Projectile"]
 cast_shadow = 0
 gi_mode = 0
-radius = 0.1
+radius = 0.0242418
 smooth_faces = false
 material = SubResource("StandardMaterial3D_ilgoy")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Projectile"]
 transform = Transform3D(0.196844, 0, 0, 0, 0.196844, 0, 0, 0, 0.196844, 0, 0, 0)
+amount = 40
 visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
 process_material = SubResource("ParticleProcessMaterial_rxwbl")
 draw_pass_1 = SubResource("QuadMesh_05hmi")

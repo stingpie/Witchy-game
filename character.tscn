@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dabw2ps645n3k"]
+[gd_scene load_steps=9 format=3 uid="uid://dabw2ps645n3k"]
 
 [ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_0tb7a"]
 [ext_resource type="Script" path="res://movement.gd" id="1_x5kph"]
 [ext_resource type="Script" path="res://pointer.gd" id="2_3qlpv"]
+[ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="3_78xml"]
+[ext_resource type="Texture2D" uid="uid://baee6tjuarvfr" path="res://WalkingANIMATIONLESS.png" id="5_4k8fh"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_pqt6d"]
 size = Vector3(0.25, 0.3, 0.125)
@@ -13,10 +15,26 @@ size = Vector3(0.25, 0.3, 0.125)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_78xml")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_0tb7a")
 }],
 "loop": true,
 "name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4k8fh")
+}],
+"loop": true,
+"name": &"running",
 "speed": 5.0
 }]
 
@@ -28,19 +46,22 @@ script = ExtResource("1_x5kph")
 [node name="Node3D" type="Node3D" parent="CharacterBody3D"]
 script = ExtResource("2_3qlpv")
 
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CharacterBody3D/Node3D"]
-outer_radius = 0.625
-sides = 16
-ring_sides = 16
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CharacterBody3D/Node3D"]
+cast_shadow = 0
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CharacterBody3D/Node3D"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CharacterBody3D/Node3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.712481)
 radius = 0.063
 height = 0.3
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D/Node3D"]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D/Node3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.01123)
 mesh = SubResource("PrismMesh_pqt6d")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CharacterBody3D/Node3D/CSGCombiner3D"]
+outer_radius = 0.625
+sides = 16
+ring_sides = 16
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.776366, 0.630283, 0, -0.630283, 0.776366, 0, 1.66549, 2.5293)
@@ -49,6 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 0.776366, 0.630283, 0, -0.630283, 0.776366, 
 shape = SubResource("CapsuleShape3D_42n0x")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 1, 0, 0, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_hpvm1")
-animation = &"new_animation"
+animation = &"running"

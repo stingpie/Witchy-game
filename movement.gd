@@ -18,6 +18,10 @@ var COF = 3.0
 
 var force = Vector3(0,0,0)
 var acceleration = Vector3(0,0,0)
+@onready var _animated_sprite = $AnimatedSprite3D
+
+func _on_ready():
+	pass
 
 func _physics_process(delta):
 		
@@ -37,6 +41,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if direction:
 		# apply a force to the character. 
 		# Here, the force is proportional to the change in angle between the new and old direction.
@@ -46,10 +51,14 @@ func _physics_process(delta):
 		if(velocity.length() < max_speed):
 			force.x = direction.x * SPEED * (2-thresh)*( 1 + max(0, thresh-velocity.dot(direction)))
 			force.z = direction.z * SPEED * (2-thresh)*( 1 + max(0, thresh-velocity.dot(direction)))
+			
+		_animated_sprite.play("running")
+			
 	else:
 		force.x = 0
 		force.z = 0
 		
+		_animated_sprite.play("idle")
 	
 	# apply friction
 	force.x = force.x - sign(velocity.x) * friction_force * delta
