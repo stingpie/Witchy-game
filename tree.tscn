@@ -14,7 +14,7 @@ radius = 0.252778
 shape = SubResource("CylinderShape3D_n15rn")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-0.330583, 0.242781, 0, -0.106922, -0.750634, 0, 0, 0, 1, 0.526368, -1.0919, 0.00140166)
+transform = Transform3D(0.242775, 0.180301, 0, -0.0519444, 0.842681, 0, 0, 0, 1, 0.126368, -0.26308, 0.00140166)
 texture = ExtResource("1_ps27s")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
