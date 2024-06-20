@@ -16,6 +16,7 @@ animations = [{
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilgoy"]
 shading_mode = 0
+grow_amount = -0.281
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_o2ihs"]
 

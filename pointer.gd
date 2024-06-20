@@ -19,19 +19,33 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	
+	# get the plane at the same height as the player
 	var dropPlane  = Plane(Vector3(0, 1, 0), -player_body.position.y/2)
+	#detect the position the mouse would be at, if projected onto that plane. 
 	var position3D = dropPlane.intersects_ray(
 							 cam.project_ray_origin(get_viewport().get_mouse_position()),
 							 cam.project_ray_normal(get_viewport().get_mouse_position()))
-	if(position3D):
+							
+
+	if(position3D): # if the position is valid,
+		# set the rotation of the pointer so that it points to the mouse.
 		rotation.y = 3.141592 / 2 -Vector2(position3D.x, position3D.z).angle_to_point(Vector2(player_body.position.x,player_body.position.z))
 	
-	if Input.is_action_pressed("left click") and position3D:
-		var projectile = projectile_scene.instantiate()
+	if Input.is_action_pressed("left click") and position3D: # if the position is valid, and the left mouse button in pressed,
+		
+		var projectile = projectile_scene.instantiate() # instantiate a preloaded scene (initialize it)
+		# calculate the direction the pointer is pointing in
 		var direction = (Vector3(position3D.x, player_body.position.y, position3D.z) - player_body.position).normalized()
+		# set the velocity of the projectile to the player's vel, plus the direction times speed. 
+		# (Ie, make the projectile move relative to the player)
 		projectile.velocity = player_body.velocity + direction * proj_speed
+		
+		# set the position of the particle at the end of the player's pointer.
 		projectile.position.x = player_body.position.x + direction.x * 1.15
-		projectile.position.y = -player_body.position.y/2 + direction.y * 1.15 
+		projectile.position.y = -player_body.position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
 		projectile.position.z = player_body.position.z + direction.z * 1.15
+		
+		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)
 	pass
