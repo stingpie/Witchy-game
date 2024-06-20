@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvf1gervynwre"]
+
+[ext_resource type="Texture2D" uid="uid://baee6tjuarvfr" path="res://WalkingANIMATIONLESS.png" id="1_ps27s"]
+[ext_resource type="Texture2D" uid="uid://b57ltx8ax77bt" path="res://Projectile_Placeholder.png" id="2_pi57n"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n15rn"]
+radius = 0.252778
+
+[node name="Tree" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_n15rn")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.330583, 0.242781, 0, -0.106922, -0.750634, 0, 0, 0, 1, 0.526368, -1.0919, 0.00140166)
+texture = ExtResource("1_ps27s")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.378135, 1.22449, 0.041362)
+texture = ExtResource("2_pi57n")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120139, 0.961999, 0.0675161)
+texture = ExtResource("2_pi57n")

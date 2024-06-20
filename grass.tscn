@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmu3ymv318wkt"]
+
+[ext_resource type="Texture2D" uid="uid://baee6tjuarvfr" path="res://WalkingANIMATIONLESS.png" id="1_gnd26"]
+
+[node name="Grass" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104915, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0427373, -1.25039e-08, 0, 3.73621e-09, -0.143028, 0, 0, 0, 1, 0, -0.216859, 0)
+texture = ExtResource("1_gnd26")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.0427373, 1.25039e-08, 8.74228e-08, 3.73621e-09, -0.143028, 0, 3.73621e-09, 1.09313e-15, -1, -0.0862623, -0.292027, 0.00230327)
+texture = ExtResource("1_gnd26")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(0.0427373, 1.25039e-08, 8.74228e-08, 3.73621e-09, -0.143028, 0, 3.73621e-09, 1.09313e-15, -1, -0.0421698, -0.194601, -0.0124374)
+texture = ExtResource("1_gnd26")
