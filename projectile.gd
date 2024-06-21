@@ -6,8 +6,13 @@ func _hit_building(area): #area is the Area2D of the building
 var damage =10
 var made_by;
 
-func _physics_process(delta):
+var wand_modifiers=[]
 
+func _physics_process(delta):
+	
+	for modifier in wand_modifiers:
+		if modifier=="decelerate":
+			velocity = velocity / (1+delta)
 	move_and_slide()
 
 

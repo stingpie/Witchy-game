@@ -15,6 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mass = 15.0
 var COF = 3.0
 
+var state ="idle"
 
 var force = Vector3(0,0,0)
 var acceleration = Vector3(0,0,0)
@@ -42,6 +43,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	
+	
 	if direction:
 		# apply a force to the character. 
 		# Here, the force is proportional to the change in angle between the new and old direction.
@@ -53,12 +56,14 @@ func _physics_process(delta):
 			force.z = direction.z * SPEED * (2-thresh)*( 1 + max(0, thresh-velocity.dot(direction)))
 			
 		_animated_sprite.play("running")
+		state = "running"
 			
 	else:
 		force.x = 0
 		force.z = 0
 		
 		_animated_sprite.play("idle")
+		state = "idle"
 	
 	# apply friction
 	force.x = force.x - sign(velocity.x) * friction_force * delta

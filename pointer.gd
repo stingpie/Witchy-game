@@ -1,6 +1,15 @@
 extends Node3D
 
 
+
+
+
+var wand_modifiers=[] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
+
+const default_reload=0.25; # default rate of fire
+
+var cool_down=0;
+
 var cam
 var player_body
 var projectile_map
@@ -32,7 +41,11 @@ func _process(delta):
 		# set the rotation of the pointer so that it points to the mouse.
 		rotation.y = 3.141592 / 2 -Vector2(position3D.x, position3D.z).angle_to_point(Vector2(player_body.position.x,player_body.position.z))
 	
-	if Input.is_action_pressed("left click") and position3D: # if the position is valid, and the left mouse button in pressed,
+	cool_down = max(0,cool_down-delta);
+	
+	if Input.is_action_pressed("left click") and position3D and cool_down <=0: # if the position is valid, and the left mouse button in pressed,
+		
+		cool_down = default_reload; ## TODO: make this change with modifiers
 		
 		var projectile = projectile_scene.instantiate() # instantiate a preloaded scene (initialize it)
 		projectile.made_by=$".."
@@ -46,6 +59,8 @@ func _process(delta):
 		projectile.position.x = player_body.position.x + direction.x * 1.15
 		projectile.position.y = -player_body.position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
 		projectile.position.z = player_body.position.z + direction.z * 1.15
+		
+		projectile.wand_modifiers = wand_modifiers # apply set modifers to projectile.
 		
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)
