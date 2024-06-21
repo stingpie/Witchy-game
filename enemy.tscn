@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dno6hc6a6t56n"]
+
+[ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="1_blfhj"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_it2wx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsfxg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8joq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_blfhj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Node3D"]
+
+[node name="EnemyBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_it2wx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBody3D"]
+shape = SubResource("CapsuleShape3D_tsfxg")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="EnemyBody3D"]
+transform = Transform3D(0.861707, 0.200564, 0, -0.151942, 1.13745, 0, 0, 0, 1, -0.413827, -1.94704, 0)
+sprite_frames = SubResource("SpriteFrames_b8joq")
