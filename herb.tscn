@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxo5teqqx6wvo"]
+[gd_scene load_steps=13 format=3 uid="uid://dxo5teqqx6wvo"]
 
-[ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_4i3oe"]
+[ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="1_qin03"]
+[ext_resource type="Texture2D" uid="uid://b57ltx8ax77bt" path="res://Projectile_Placeholder.png" id="2_bolyu"]
 
 [sub_resource type="GDScript" id="GDScript_wna60"]
 script/source = "extends Area3D
@@ -11,16 +12,66 @@ func _ready():
 
 # Called when a body enters the Area3D's collision shape.
 
+var herb_type = \":)\"
 
 func _on_body_entered(body):
-	if body is CharacterBody3D:
-		
+	if body is CharacterBody3D and body.name.substr(0,6) == \"Player\":
+		if(body.inventory.has(herb_type)):
+			body.inventory[herb_type]+=1
+		else:
+			body.inventory[herb_type] = 1
 		queue_free()
 
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ajgg"]
 size = Vector3(1.26373, 1.22644, 0.305084)
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_o2ihs"]
+
+[sub_resource type="Curve" id="Curve_qh3yc"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jy1lw"]
+curve = SubResource("Curve_qh3yc")
+
+[sub_resource type="Curve" id="Curve_3f85s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghlvj"]
+curve = SubResource("Curve_3f85s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i6t61"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 5.06
+inherit_velocity_ratio = 1.0
+directional_velocity_min = -0.1
+directional_velocity_max = 0.1
+directional_velocity_curve = SubResource("CurveXYZTexture_o2ihs")
+orbit_velocity_min = -0.04
+orbit_velocity_max = 0.902
+orbit_velocity_curve = SubResource("CurveTexture_jy1lw")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_ghlvj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxetj"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("2_bolyu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lwiht"]
+material = SubResource("StandardMaterial3D_lxetj")
+size = Vector2(0.2, 0.2)
 
 [node name="Herb" type="Node3D"]
 
@@ -32,6 +83,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0259768, 0.00900751, -0.00
 shape = SubResource("BoxShape3D_4ajgg")
 
 [node name="Sprite3D" type="Sprite3D" parent="HerbArea3D"]
-texture = ExtResource("1_4i3oe")
+transform = Transform3D(0.00247433, 0.191754, 0, -0.499188, 0.000950472, 0, 0, 0, 1, 0, -0.198634, 0)
+texture = ExtResource("1_qin03")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="HerbArea3D"]
+transform = Transform3D(0.196844, 0, 0, 0, 0.196844, 0, 0, 0, 0.196844, 0, 0, 0)
+amount = 40
+visibility_aabb = AABB(-1.83767, -2.30744, -1.04398, 3.67534, 4.61487, 2.08797)
+process_material = SubResource("ParticleProcessMaterial_i6t61")
+draw_pass_1 = SubResource("QuadMesh_lwiht")
 
 [connection signal="body_entered" from="HerbArea3D" to="HerbArea3D" method="_on_body_entered"]

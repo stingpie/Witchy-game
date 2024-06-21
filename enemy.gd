@@ -11,7 +11,7 @@ var HP=100;
 
 var state = "stand"
 
-@onready var player = $"../../Player/CharacterBody3D"
+@onready var player = $"../../Player/PlayerBody3D"
 
 func damage(amount):
 	HP -= amount

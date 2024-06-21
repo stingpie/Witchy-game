@@ -40,36 +40,36 @@ animations = [{
 
 [node name="Node3D" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="PlayerBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_x5kph")
 
-[node name="Node3D" type="Node3D" parent="CharacterBody3D"]
+[node name="Node3D" type="Node3D" parent="PlayerBody3D"]
 script = ExtResource("2_3qlpv")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CharacterBody3D/Node3D"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="PlayerBody3D/Node3D"]
 cast_shadow = 0
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CharacterBody3D/Node3D/CSGCombiner3D"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayerBody3D/Node3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.712481)
 radius = 0.063
 height = 0.3
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D/Node3D/CSGCombiner3D"]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="PlayerBody3D/Node3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.01123)
 mesh = SubResource("PrismMesh_pqt6d")
 
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CharacterBody3D/Node3D/CSGCombiner3D"]
+[node name="CSGTorus3D" type="CSGTorus3D" parent="PlayerBody3D/Node3D/CSGCombiner3D"]
 outer_radius = 0.625
 sides = 16
 ring_sides = 16
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+[node name="Camera3D" type="Camera3D" parent="PlayerBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.776366, 0.630283, 0, -0.630283, 0.776366, 0, 1.66549, 2.5293)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody3D"]
 shape = SubResource("CapsuleShape3D_42n0x")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerBody3D"]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 1, 0, 0, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_hpvm1")

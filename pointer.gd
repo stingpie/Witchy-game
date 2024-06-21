@@ -4,7 +4,7 @@ extends Node3D
 
 
 
-var wand_modifiers=[] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
+var wand_modifiers=["split_2"] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
 
 const default_reload=0.25; # default rate of fire
 
@@ -83,6 +83,8 @@ func _process(delta):
 		projectile.position.z = player_body.position.z + direction.z * 1.15
 		
 		projectile.wand_modifiers = wand_modifiers # apply set modifers to projectile.
+		
+		projectile.damage = 20
 		
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)

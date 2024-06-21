@@ -3,10 +3,12 @@ extends CharacterBody3D
 
 
 const thresh=0.1
-const SPEED = 9.00
+const SPEED = 9.25
 const JUMP_VELOCITY = 4.5
 
 const max_speed = 15.0
+
+var inventory = {}
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -25,6 +27,7 @@ func _on_ready():
 	pass
 
 func _physics_process(delta):
+		
 		
 	# calculate normal force and friction force. 
 	var normal_force = mass * gravity
