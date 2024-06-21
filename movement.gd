@@ -9,7 +9,7 @@ const JUMP_VELOCITY = 4.5
 const max_speed = 15.0
 
 var inventory = {}
-
+var HP = 100;
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -27,7 +27,6 @@ func _on_ready():
 	pass
 
 func _physics_process(delta):
-		
 		
 	# calculate normal force and friction force. 
 	var normal_force = mass * gravity
@@ -95,3 +94,9 @@ func _physics_process(delta):
 		velocity.z += acceleration.z
 	
 	move_and_slide()
+
+func damage(amount):
+	HP -= amount
+	if(HP<=0):# GAME OVER
+		get_tree().change_scene("res://game over.tscn")
+		

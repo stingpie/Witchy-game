@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dbay4hs80ltk3"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -138.0
+offset_top = -95.0
+offset_right = 138.0
+offset_bottom = 97.0
+text = "RIP. 
+YOU DEAD..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(43, 37)

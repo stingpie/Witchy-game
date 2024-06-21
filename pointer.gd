@@ -4,7 +4,7 @@ extends Node3D
 
 
 
-var wand_modifiers=["split_2"] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
+var wand_modifiers=["split", "decelerate"] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
 
 const default_reload=0.25; # default rate of fire
 

@@ -33,6 +33,10 @@ func _physics_process(delta):
 				projectile.velocity += Vector3(0,1,0).cross(velocity).normalized();
 				projectile.position += Vector3(0,1,0).cross(velocity).normalized()*0.1;
 				
+				wand_modifiers.erase("split")
+				
+				projectile.wand_modifiers = wand_modifiers
+				
 				add_sibling(projectile)
 				
 				var projectile2 = self.duplicate()
@@ -40,9 +44,13 @@ func _physics_process(delta):
 				projectile2.velocity += Vector3(0,-1,0).cross(velocity).normalized();
 				projectile2.position += Vector3(0,-1,0).cross(velocity).normalized()*0.1;
 				
+				projectile2.wand_modifiers = wand_modifiers
+				
 				add_sibling(projectile2)
 				
 				queue_free()
+			
+		
 			
 	move_and_slide()
 
