@@ -35,6 +35,7 @@ func _process(delta):
 	if Input.is_action_pressed("left click") and position3D: # if the position is valid, and the left mouse button in pressed,
 		
 		var projectile = projectile_scene.instantiate() # instantiate a preloaded scene (initialize it)
+		projectile.made_by=$".."
 		# calculate the direction the pointer is pointing in
 		var direction = (Vector3(position3D.x, player_body.position.y, position3D.z) - player_body.position).normalized()
 		# set the velocity of the projectile to the player's vel, plus the direction times speed. 

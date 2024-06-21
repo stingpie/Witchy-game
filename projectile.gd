@@ -4,6 +4,7 @@ func _hit_building(area): #area is the Area2D of the building
 	print("player hit building")
 
 var damage =10
+var made_by;
 
 func _physics_process(delta):
 
@@ -12,6 +13,6 @@ func _physics_process(delta):
 
 func _on_area_3d_body_entered(body):
 	
-	if body.name.to_lower().substr(0,5) == "enemy":
+	if body is CharacterBody3D and body != made_by :
 		body.damage(damage)
 	pass # Replace with function body.
