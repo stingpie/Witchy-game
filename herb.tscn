@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxo5teqqx6wvo"]
+
+[ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_4i3oe"]
+
+[sub_resource type="GDScript" id="GDScript_wna60"]
+script/source = "extends Area3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called when a body enters the Area3D's collision shape.
+
+
+func _on_body_entered(body):
+	if body is CharacterBody3D:
+		
+		queue_free()
+
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ajgg"]
+size = Vector3(1.26373, 1.22644, 0.305084)
+
+[node name="Herb" type="Node3D"]
+
+[node name="HerbArea3D" type="Area3D" parent="."]
+script = SubResource("GDScript_wna60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HerbArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0259768, 0.00900751, -0.00182843)
+shape = SubResource("BoxShape3D_4ajgg")
+
+[node name="Sprite3D" type="Sprite3D" parent="HerbArea3D"]
+texture = ExtResource("1_4i3oe")
+
+[connection signal="body_entered" from="HerbArea3D" to="HerbArea3D" method="_on_body_entered"]
