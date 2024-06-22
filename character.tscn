@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dabw2ps645n3k"]
+[gd_scene load_steps=10 format=3 uid="uid://dabw2ps645n3k"]
 
 [ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_0tb7a"]
 [ext_resource type="Script" path="res://movement.gd" id="1_x5kph"]
 [ext_resource type="Script" path="res://pointer.gd" id="2_3qlpv"]
 [ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="3_78xml"]
+[ext_resource type="PackedScene" uid="uid://co0ymoicsxym" path="res://combat gui.tscn" id="3_uyay5"]
 [ext_resource type="Texture2D" uid="uid://baee6tjuarvfr" path="res://WalkingANIMATIONLESS.png" id="5_4k8fh"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_pqt6d"]
@@ -64,7 +65,9 @@ sides = 16
 ring_sides = 16
 
 [node name="Camera3D" type="Camera3D" parent="PlayerBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.776366, 0.630283, 0, -0.630283, 0.776366, 0, 1.66549, 2.5293)
+transform = Transform3D(1, 0, 0, 0, 0.776366, 0.630283, 0, -0.630283, 0.776366, 0, 3.81006, 5.64295)
+
+[node name="CombatGui" parent="PlayerBody3D/Camera3D" instance=ExtResource("3_uyay5")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody3D"]
 shape = SubResource("CapsuleShape3D_42n0x")

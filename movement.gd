@@ -24,10 +24,12 @@ var acceleration = Vector3(0,0,0)
 @onready var _animated_sprite = $AnimatedSprite3D
 
 func _on_ready():
+	
 	pass
 
 func _physics_process(delta):
-		
+	
+	$"Camera3D/CombatGui/ProgressBar".value = HP;
 	# calculate normal force and friction force. 
 	var normal_force = mass * gravity
 	var friction_force = (normal_force * COF)
@@ -97,6 +99,7 @@ func _physics_process(delta):
 
 func damage(amount):
 	HP -= amount
+	#$"Camera3D/CombatGui/ProgressBar".value = HP;
 	if(HP<=0):# GAME OVER
 		get_tree().change_scene("res://game over.tscn")
 		
