@@ -9,6 +9,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var HP=100;
 
+
+
 const animations=["east", "north east", "north", "north west", "west", "south west", "south", "south east"]
 
 
@@ -37,7 +39,7 @@ func _physics_process(delta):
 	
 	var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
 	
-	
+	$"Node3D".fire_proj()
 	
 	
 	if(HP <= 0):

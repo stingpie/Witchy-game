@@ -85,8 +85,11 @@ func _physics_process(delta):
 		# plays.
 		
 		#if(velocity.length() < max_speed):
-		force.x = mass/15 * direction.x * SPEED if state == "running" else SPEED/2
-		force.z = mass/15 * direction.z * SPEED if state == "running" else SPEED/2
+		#force.x = mass/15 * direction.x * SPEED if state == "running" else SPEED/2
+		#force.z = mass/15 * direction.z * SPEED if state == "running" else SPEED/2
+		
+		velocity.x = direction.x * SPEED if state == "running" else SPEED/2
+		velocity.z = direction.z * SPEED if state == "running" else SPEED/2
 			# * (2-thresh)*( 1 + max(0, thresh-velocity.dot(direction)))
 			
 		#force *=  max(0,min(1,  (max_speed/(abs(velocity.length())+0.001)) - (velocity.normalized() - direction.normalized()).length()    ))
@@ -95,35 +98,38 @@ func _physics_process(delta):
 		
 			
 	else:
-		force.x = 0
-		force.z = 0
+		
+		velocity.x=0
+		velocity.z=0
+		#force.x = 0
+		#force.z = 0
 		
 		_animated_sprite.play("idle")
-	
-	# apply friction
-	force.x = force.x - sign(velocity.x) * friction_force * delta
-	force.z = force.z - sign(velocity.z) * friction_force * delta
-	
-	# set acceleration due to the force
-	acceleration.x = force.x / mass
-	acceleration.z = force.z / mass
-	
-	if(velocity.length()<0.25):
-		velocity *= 0.9;
-		acceleration *= 0.9;
-		force *= 0.9;
-	
-	
-	if(is_on_floor()):
-		# apply acceleration if the player is on the floor (ie, not jumping) 
-		velocity.x += acceleration.x
-		velocity.z += acceleration.z
-	
+	#
+	## apply friction
+	#force.x = force.x - sign(velocity.x) * friction_force * delta
+	#force.z = force.z - sign(velocity.z) * friction_force * delta
+	#
+	## set acceleration due to the force
+	#acceleration.x = force.x / mass
+	#acceleration.z = force.z / mass
+	#
+	#if(velocity.length()<0.25):
+		#velocity *= 0.9;
+		#acceleration *= 0.9;
+		#force *= 0.9;
+	#
+	#
+	#if(is_on_floor()):
+		## apply acceleration if the player is on the floor (ie, not jumping) 
+		#velocity.x += acceleration.x
+		#velocity.z += acceleration.z
+	#
 	move_and_slide()
 
 func damage(amount):
 	HP -= amount
 	#$"Camera3D/CombatGui/ProgressBar".value = HP;
 	if(HP<=0):# GAME OVER
-		get_tree().change_scene("res://game over.tscn")
+		get_tree().change_scene_to_file("res://game over.tscn")
 		

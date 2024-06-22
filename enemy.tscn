@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dno6hc6a6t56n"]
+[gd_scene load_steps=14 format=3 uid="uid://dno6hc6a6t56n"]
 
 [ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="1_blfhj"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_it2wx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dbh6wxv760qom" path="res://graphics/enemy/snake/snake-sprite-SE.png" id="8_vl2xi"]
 [ext_resource type="Texture2D" uid="uid://cud5w37lr7loo" path="res://graphics/enemy/snake/snake-sprite-SW.png" id="9_gkh21"]
 [ext_resource type="Texture2D" uid="uid://ckil3ebb5d7ad" path="res://graphics/enemy/snake/snake-sprite-W.png" id="9_tdd7w"]
+[ext_resource type="Script" path="res://enemyattack.gd" id="11_ef6eu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsfxg"]
 
@@ -102,3 +103,6 @@ billboard = 1
 no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_b8joq")
 animation = &"south west"
+
+[node name="Node3D" type="Node3D" parent="EnemyBody3D"]
+script = ExtResource("11_ef6eu")

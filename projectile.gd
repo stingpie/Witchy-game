@@ -59,5 +59,5 @@ func _on_area_3d_body_entered(body):
 	
 	if body is CharacterBody3D and body != made_by :
 		body.damage(damage)
-		queue_free()
+		#queue_free()
 	pass # Replace with function body.
