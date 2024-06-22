@@ -18,6 +18,8 @@ var mass = 30.0
 var COF = 3.5
 
 var state ="idle" # potential states : idle, running, slipping, slow running. 
+var in_inventory=false
+
 
 var force = Vector3(0,0,0)
 var acceleration = Vector3(0,0,0)
@@ -53,8 +55,30 @@ func _physics_process(delta):
 		state = "running"
 	else:
 		state = "idle"
+		
+	if Input.is_action_just_pressed("open inventory"):
+		if(in_inventory):
+			$"Camera3D/CombatGui".visible = true;
+			$"Camera3D/CombatGui".set_process(true);
+			
+			$"Camera3D/Inventory".visible = false;
+			$"Camera3D/Inventory".set_process(false);
+			
+			$"Node3D".set_process(true)
+			
+			in_inventory = false
+		else:
+			$"Camera3D/CombatGui".visible = false;
+			$"Camera3D/CombatGui".set_process(false);
+			
+			$"Camera3D/Inventory".visible = true;
+			$"Camera3D/Inventory".set_process(true);
+			
+			$"Node3D".set_process(false)
+		
+			in_inventory = true
 	
-	if direction and (state == "running" or state == "slow running"):
+	if direction and (state == "running" or state == "slow running") and not in_inventory:
 		# apply a force to the character. 
 		# Here, the force is proportional to the change in angle between the new and old direction.
 		# you can reverse easily, but not turn quickly. I might change this. Depends on how it
