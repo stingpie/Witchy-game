@@ -9,6 +9,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var HP=100;
 
+const animations=["east", "north east", "north", "north west", "west", "south west", "south", "south east"]
+
+
 var state = "stand"
 
 @onready var player = $"../../Player/PlayerBody3D"
@@ -32,6 +35,11 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var player_dist = (Vector3(player.position.x, player.position.y, player.position.z) - position).length()
 	
+	var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
+	
+	
+	
+	
 	if(HP <= 0):
 		state = "dead"
 		
@@ -47,7 +55,17 @@ func _physics_process(delta):
 		
 	
 	if(state == "approach"):
-		var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
+		#var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
+		#var index = int(round(((direction.dot(Vector3(0,0,1))/direction.length()) + 1)*4))%8
+		
+		var rot = Vector2(-position.x - get_parent().position.x,position.z + get_parent().position.z).angle_to_point(Vector2(-player.position.x,player.position.z))
+		var index = int(round((rot+PI)/(2*PI)*8))%8
+		$"AnimatedSprite3D".play(animations[index])
+		
+		#print(((direction.dot(Vector3(1,0,0))/direction.length()) + 1)*4)
+		
+		
+		
 		
 		if(player_dist<4):
 			state = "stand"
