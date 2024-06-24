@@ -4,7 +4,7 @@ extends Node3D
 
 
 
-var wand_modifiers=["split"] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
+var wand_modifiers=["cyclone"] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
 
 const default_reload=0.25; # default rate of fire
 
@@ -28,10 +28,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	
-							
-
 	cool_down = max(0,cool_down-delta);
 	pass
 	
@@ -45,6 +41,7 @@ func fire_proj():
 		projectile.made_by=$".."
 		# calculate the direction the pointer is pointing in
 		var direction = (Vector3(position3D.x, body.position.y, position3D.z) - body.position - parent.position).normalized()
+		direction.y=0
 		# set the velocity of the projectile to the player's vel, plus the direction times speed. 
 		# (Ie, make the projectile move relative to the player)
 		projectile.velocity = body.velocity + direction * proj_speed
@@ -57,7 +54,9 @@ func fire_proj():
 		
 		
 		
-		projectile.wand_modifiers = wand_modifiers # apply set modifers to projectile.
+		projectile.wand_modifiers = wand_modifiers.duplicate() # apply set modifers to projectile.
+		
+		projectile.get_node("Projectile/AnimatedSprite3D").play("evil")
 		
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)

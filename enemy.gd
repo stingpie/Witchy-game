@@ -18,12 +18,16 @@ var state = "stand"
 
 @onready var player = $"../../Player/PlayerBody3D"
 
+
+
 func damage(amount):
 	HP -= amount
 
 func _physics_process(delta):
+	# this controls the enemy. I should definitely improve the ai, give a couple
+	# of different behaviors. 
 	
-	#print(state)
+	
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -46,7 +50,7 @@ func _physics_process(delta):
 		state = "dead"
 		
 	if(state == "dead"):
-		scale *= 0.9
+		scale *= 0.9 # TODO: make this based on delta
 		if(scale.length() < 0.1):
 			queue_free()
 		
@@ -57,14 +61,15 @@ func _physics_process(delta):
 		
 	
 	if(state == "approach"):
-		#var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
-		#var index = int(round(((direction.dot(Vector3(0,0,1))/direction.length()) + 1)*4))%8
 		
+		
+		# this code really sucks.
+		# this first line figures out the angle between the enemy and the player. 
+		# the second line takes the angle and forces it to range between 0 & 7 (inclusive.)
+		# this new value is then used to index into the animations array, which picks the animation to play.
 		var rot = Vector2(-position.x - get_parent().position.x,position.z + get_parent().position.z).angle_to_point(Vector2(-player.position.x,player.position.z))
 		var index = int(round((rot+PI)/(2*PI)*8))%8
 		$"AnimatedSprite3D".play(animations[index])
-		
-		#print(((direction.dot(Vector3(1,0,0))/direction.length()) + 1)*4)
 		
 		
 		

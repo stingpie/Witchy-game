@@ -57,23 +57,32 @@ func _physics_process(delta):
 		state = "idle"
 		
 	if Input.is_action_just_pressed("open inventory"):
-		if(in_inventory):
+		# toggle inventory screen
+		
+		if(in_inventory): #if the inventory screen is already open
+			
+			# open the combat gui
 			$"Camera3D/CombatGui".visible = true;
 			$"Camera3D/CombatGui".set_process(true);
 			
+			# close the inventory gui
 			$"Camera3D/Inventory".visible = false;
 			$"Camera3D/Inventory".set_process(false);
 			
+			#enable pointer (and firing spells)
 			$"Node3D".set_process(true)
 			
 			in_inventory = false
 		else:
+			# close the combat gui
 			$"Camera3D/CombatGui".visible = false;
 			$"Camera3D/CombatGui".set_process(false);
 			
+			#open the inventory gui
 			$"Camera3D/Inventory".visible = true;
 			$"Camera3D/Inventory".set_process(true);
 			
+			# disable the pointer (and firing spells)
 			$"Node3D".set_process(false)
 		
 			in_inventory = true
@@ -88,8 +97,13 @@ func _physics_process(delta):
 		#force.x = mass/15 * direction.x * SPEED if state == "running" else SPEED/2
 		#force.z = mass/15 * direction.z * SPEED if state == "running" else SPEED/2
 		
+		
+		# this is the most basic movement system. The velocity is just set as the direction you're traveling. 
+		# this is the most responsive movement, but it is a very brutish way of doing things.
 		velocity.x = direction.x * SPEED if state == "running" else SPEED/2
 		velocity.z = direction.z * SPEED if state == "running" else SPEED/2
+		
+		
 			# * (2-thresh)*( 1 + max(0, thresh-velocity.dot(direction)))
 			
 		#force *=  max(0,min(1,  (max_speed/(abs(velocity.length())+0.001)) - (velocity.normalized() - direction.normalized()).length()    ))
@@ -97,7 +111,7 @@ func _physics_process(delta):
 		_animated_sprite.play("running")
 		
 			
-	else:
+	else: # if nothing is pressed
 		
 		velocity.x=0
 		velocity.z=0
@@ -127,7 +141,7 @@ func _physics_process(delta):
 	#
 	move_and_slide()
 
-func damage(amount):
+func damage(amount): # apply damage to player.
 	HP -= amount
 	#$"Camera3D/CombatGui/ProgressBar".value = HP;
 	if(HP<=0):# GAME OVER

@@ -1,16 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://c67nouh4xms72"]
+[gd_scene load_steps=16 format=3 uid="uid://c67nouh4xms72"]
 
 [ext_resource type="Script" path="res://projectile.gd" id="1_wwi8f"]
 [ext_resource type="Texture2D" uid="uid://b57ltx8ax77bt" path="res://Projectile_Placeholder.png" id="2_6b0rb"]
+[ext_resource type="Texture2D" uid="uid://dgpt0kemnxv1i" path="res://Evil_Projectile_Placeholder.png" id="2_xp07x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xc2gb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_xp07x")
+}],
+"loop": true,
+"name": &"evil",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_6b0rb")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"good",
 "speed": 5.0
 }]
 
@@ -79,11 +88,10 @@ script = ExtResource("1_wwi8f")
 [node name="Projectile" type="Node3D" parent="."]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Projectile"]
-transform = Transform3D(0.221416, 0, 0, 0, 0.221416, 0, 0, 0, -0.223021, 0, 0, 0)
-visible = false
+transform = Transform3D(0.293015, 0, 0, 0, 0.295653, 0, 0, 0, -0.223021, 0, 0, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_xc2gb")
-animation = &"new_animation"
+animation = &"good"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Projectile"]
 cast_shadow = 0
@@ -94,6 +102,7 @@ material = SubResource("StandardMaterial3D_ilgoy")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Projectile"]
 transform = Transform3D(0.196844, 0, 0, 0, 0.196844, 0, 0, 0, 0.196844, 0, 0, 0)
+visible = false
 amount = 40
 visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
 process_material = SubResource("ParticleProcessMaterial_rxwbl")

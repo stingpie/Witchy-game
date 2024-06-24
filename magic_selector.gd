@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var spells = [["split"],["decelerate"],["decelerate","split"],[]]
+var spells = [["split", "split", "split"],["decelerate"],["decelerate","split"],[]]
 
 var spell_index=0;
 const max_spells=4;
@@ -20,6 +20,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	# This is bad practice. It's better to use an interrupt-style here than a busy loop style.
+	# There is probably some way to use signals to do this. 
 	if Input.is_action_just_pressed("middle wheel") or Input.is_action_just_pressed("tab"):
 		get_child(0).get_child(spell_index).get_child(0).color = Color(0,0,0)
 		

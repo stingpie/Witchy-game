@@ -62,7 +62,7 @@ func _process(delta):
 		projectile.position.y = -player_body.position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
 		projectile.position.z = player_body.position.z + direction.z * 1.15
 		
-		projectile.wand_modifiers = wand_modifiers # apply set modifers to projectile.
+		projectile.wand_modifiers = wand_modifiers.duplicate() # apply set modifers to projectile.
 		
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)
@@ -84,13 +84,16 @@ func _process(delta):
 		projectile.position.y = -player_body.position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
 		projectile.position.z = player_body.position.z + direction.z * 1.15
 		
-		projectile.wand_modifiers = wand_modifiers # apply set modifers to projectile.
+		projectile.wand_modifiers = wand_modifiers.duplicate() # apply set modifers to projectile.
 		
 		projectile.damage = 20
 		
+		
+		
+		
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)
-		
+		projectile.get_node("Projectile/AnimatedSprite3D").play("good")
 	$"../Camera3D/CombatGui/ProgressBar2".value = 100 - 100*cool_down/default_reload
 		
 	pass
