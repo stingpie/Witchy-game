@@ -64,6 +64,8 @@ func _process(delta):
 		
 		projectile.wand_modifiers = wand_modifiers.duplicate() # apply set modifers to projectile.
 		
+		projectile.initial_speed = proj_speed
+		
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)
 	
@@ -89,7 +91,7 @@ func _process(delta):
 		projectile.damage = 20
 		
 		
-		
+		projectile.initial_speed = proj_speed
 		
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)

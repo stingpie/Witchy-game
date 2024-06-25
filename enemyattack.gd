@@ -16,7 +16,7 @@ var projectile_map
 var projectile_scene
 var parent
 
-const proj_speed = 10.0
+const proj_speed = 5.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	body = $".."
@@ -58,6 +58,7 @@ func fire_proj():
 		
 		projectile.get_node("Projectile/AnimatedSprite3D").play("evil")
 		
+		projectile.initial_speed = proj_speed
 		# add the projectile to the map the player is currently in
 		projectile_map.add_child(projectile)
 

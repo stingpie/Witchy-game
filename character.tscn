@@ -66,7 +66,7 @@ sides = 16
 ring_sides = 16
 
 [node name="Camera3D" type="Camera3D" parent="PlayerBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.776366, 0.630283, 0, -0.630283, 0.776366, 0, 3.81006, 5.64295)
+transform = Transform3D(1, 0, 0, 0, 0.557629, 0.83009, 0, -0.83009, 0.557629, 0, 8.07377, 3.96424)
 
 [node name="CombatGui" parent="PlayerBody3D/Camera3D" instance=ExtResource("3_uyay5")]
 

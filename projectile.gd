@@ -6,6 +6,8 @@ var made_by;
 const lifespan=10;
 var time_left = lifespan;
 
+var initial_speed=0;
+
 var wand_modifiers=[]
 
 var has_split=false
@@ -42,6 +44,9 @@ func _physics_process(delta):
 				
 				projectile.time_left=lifespan;
 				
+				projectile.initial_speed = initial_speed
+				
+				
 				add_sibling(projectile) # put the projectile into the world. 
 				
 				
@@ -55,17 +60,24 @@ func _physics_process(delta):
 				
 				projectile2.time_left=lifespan;
 				
+				
+				projectile2.initial_speed = initial_speed
+				
 				add_sibling(projectile2)
 				
 				has_split=true
+				
 				
 				queue_free()
 			
 		if modifier.substr(0,6) == "spiral":
 			velocity += Vector3(0,1,0).cross(velocity).normalized()*delta*10;
-		if modifier.substr(0,7) == "cyclone":
-			if lifespan - time_left >0.35:
-				velocity += Vector3(0,1,0).cross(velocity).normalized();
+		
+		
+			
+		if modifier == "cyclone":
+			if lifespan - time_left >0:
+				velocity += Vector3(0,1,0).cross(velocity).normalized() * initial_speed/10;
 		
 			
 	move_and_slide()
