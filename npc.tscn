@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd7tuciruduky"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_5nswy"]
+[ext_resource type="Texture2D" uid="uid://6oblva5n1ym6" path="res://graphics/NPC/guy-standing.png" id="2_gkmi3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ejsi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8j5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gkmi3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6s710"]
+radius = 1.0
+
+[node name="Npc" type="Node3D"]
+script = ExtResource("1_5nswy")
+file = "res://dialog/example.json"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CapsuleShape3D_7ejsi")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.509149, 0, 0, 0, 0.509149, 0, 0, 0, 1, 0.0986798, 0.578508, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_a8j5l")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_6s710")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccl3rym3gjsho"]
+[gd_scene load_steps=12 format=3 uid="uid://ccl3rym3gjsho"]
 
 [ext_resource type="PackedScene" uid="uid://dabw2ps645n3k" path="res://character.tscn" id="1_k31ka"]
 [ext_resource type="PackedScene" uid="uid://cvf1gervynwre" path="res://tree.tscn" id="2_ueqws"]
 [ext_resource type="PackedScene" uid="uid://dmu3ymv318wkt" path="res://grass.tscn" id="3_pcvs0"]
 [ext_resource type="PackedScene" uid="uid://dno6hc6a6t56n" path="res://enemy.tscn" id="4_ocgs2"]
 [ext_resource type="PackedScene" uid="uid://dxo5teqqx6wvo" path="res://herb.tscn" id="5_dbs7u"]
+[ext_resource type="PackedScene" uid="uid://bd7tuciruduky" path="res://npc.tscn" id="6_ntado"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jfbhr"]
 size = Vector3(100, 0.1, 100)
@@ -74,3 +75,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -10)
 
 [node name="Herb" parent="." instance=ExtResource("5_dbs7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88468, 1.62556, -4.45713)
+
+[node name="Npc" parent="." instance=ExtResource("6_ntado")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.01021, 0.913975, -1.05627)
