@@ -11,6 +11,11 @@ const max_speed = 15.0
 var inventory = {}
 var HP = 100;
 
+const TimeEvent = preload("res://TimeEvent.gd")
+
+var time_effects=[]
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -49,7 +54,7 @@ func _physics_process(delta):
 	var input_dir = Vector2(Input.get_axis("ui_left","ui_right"), Input.get_axis("ui_up", "ui_down")) 
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))#.normalized()
 
-	
+
 	
 	if(direction):
 		state = "running"
@@ -139,6 +144,25 @@ func _physics_process(delta):
 		#velocity.x += acceleration.x
 		#velocity.z += acceleration.z
 	#
+	
+	
+	for event in time_effects:
+		var effect = event.kill_if_over()
+		if(effect):
+			if(effect[0] == "HP"):
+				HP += effect[1]
+			if(effect[0] == "item"):
+				inventory.append(effect[1])
+			time_effects.erase(event)
+	
+	if(Input.is_action_just_pressed("time spell")):
+		HP -= 10
+		var event = TimeEvent.new()
+		event.type = "HP"
+		event.variable=10
+		event.duration = 10
+		time_effects.append(event)
+	
 	move_and_slide()
 
 func damage(amount): # apply damage to player.
