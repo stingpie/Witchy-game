@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfi7a5jldulvr"]
+
+[ext_resource type="Script" path="res://DialogGUI.gd" id="1_2chka"]
+[ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="2_ab8uj"]
+[ext_resource type="Texture2D" uid="uid://doej5ovd8jqx0" path="res://graphics/NPC/guy-standing-portrait.png" id="3_8g6nt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fkqqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8g6nt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dialog" type="Node2D"]
+script = ExtResource("1_2chka")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 429)
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+
+[node name="textbox" type="Sprite2D" parent="Node2D/Node2D"]
+texture = ExtResource("2_ab8uj")
+
+[node name="Label" type="Label" parent="Node2D/Node2D"]
+offset_left = -105.0
+offset_right = 106.0
+offset_bottom = 23.0
+text = "TEXT GOES HERE..."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(-800, 0)
+
+[node name="Left Character" type="AnimatedSprite2D" parent="Node2D2"]
+scale = Vector2(0.680002, 0.680002)
+sprite_frames = SubResource("SpriteFrames_fkqqv")
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(800, 0)
+
+[node name="Right Character" type="AnimatedSprite2D" parent="Node2D3"]
+position = Vector2(0, 1.14441e-05)
+scale = Vector2(0.680002, 0.680002)
+sprite_frames = SubResource("SpriteFrames_fkqqv")
