@@ -16,6 +16,7 @@ func _ready():
 		var data_received = json.data
 		if typeof(data_received) == TYPE_ARRAY:
 			print(data_received) # Prints array
+			dialog = data_received
 		else:
 			print("Unexpected data")
 	else:
@@ -27,5 +28,6 @@ func _physics_process(delta):
 	
 	if $"../Player/PlayerBody3D" in $"Area3D".get_overlapping_bodies():
 		if Input.is_action_just_pressed("interact"):
-			print("PUT DIALOG HANDLING HERE ...")
+			$"../Player/PlayerBody3D/Camera3D/Dialog".dialog = dialog
+			$"../Player/PlayerBody3D/Camera3D/Dialog".begin(delta)
 	

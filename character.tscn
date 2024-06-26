@@ -75,7 +75,6 @@ transform = Transform3D(1, 0, 0, 0, 0.557629, 0.83009, 0, -0.83009, 0.557629, 0,
 visible = false
 
 [node name="Dialog" parent="PlayerBody3D/Camera3D" instance=ExtResource("5_57eed")]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody3D"]
 shape = SubResource("CapsuleShape3D_42n0x")
