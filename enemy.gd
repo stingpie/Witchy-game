@@ -11,13 +11,18 @@ var HP=100;
 
 
 
-const animations=["east", "north east", "north", "north west", "west", "south west", "south", "south east"]
+const animations=["East", "North-East", "North", "North-West", "West", "South-West", "South", "South-East"]
 
 
 var state = "stand"
 
 @onready var player = $"../../Player/PlayerBody3D"
 
+
+var AI = preload("res://GenericAI.gd")
+
+func _ready():
+	AI= AI.new()
 
 
 func damage(amount):
@@ -39,9 +44,11 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var player_dist = (Vector3(player.position.x, player.position.y, player.position.z) - position).length()
 	
-	var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
+	#var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
+	var direction = null
 	
 	$"Node3D".fire_proj()
+	
 	
 	
 	if(HP <= 0):
@@ -51,35 +58,38 @@ func _physics_process(delta):
 		scale *= 0.9 # TODO: make this based on delta
 		if(scale.length() < 0.1):
 			queue_free()
+	else:
+		var command = AI.get_control(player, self)
 		
-	if(state == "stand"):
-		velocity *= 0;
-		if(player_dist>12):
-			state = "approach"
+		#print(command)
+		
+		state = command['state']
+		direction = Vector2(command['x'], command['y'])
+		
+
 		
 	
-	if(state == "approach"):
-		
-		
-		# this code really sucks.
-		# this first line figures out the angle between the enemy and the player. 
-		# the second line takes the angle and forces it to range between 0 & 7 (inclusive.)
-		# this new value is then used to index into the animations array, which picks the animation to play.
-		var rot = Vector2(-position.x - get_parent().position.x,position.z + get_parent().position.z).angle_to_point(Vector2(-player.position.x,player.position.z))
-		var index = int(round((rot+PI)/(2*PI)*8))%8
-		$"AnimatedSprite3D".play(animations[index])
-		
-		
-		
-		
-		if(player_dist<4):
-			state = "stand"
-		
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	
+	# this code really sucks.
+	# this first line figures out the angle between the enemy and the player. 
+	# the second line takes the angle and forces it to range between 0 & 7 (inclusive.)
+	# this new value is then used to index into the animations array, which picks the animation to play.
+	var rot = Vector2(-position.x - get_parent().position.x,position.z + get_parent().position.z).angle_to_point(Vector2(-player.position.x,player.position.z))
+	var index = int(round((rot+PI)/(2*PI)*8))%8
+	$"AnimatedSprite3D".play(animations[index])
+	
+	
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.y * SPEED
+	else:
+		velocity = Vector3(0,0,0)
+		#if direction:
+		#	velocity.x = direction.x * SPEED
+		#	velocity.z = direction.z * SPEED
+		#else:
+		#	velocity.x = move_toward(velocity.x, 0, SPEED)
+	#		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()

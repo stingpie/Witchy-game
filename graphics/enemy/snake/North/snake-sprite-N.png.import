@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xiijvo8ktb8f"
-path.s3tc="res://.godot/imported/snake-sprite-E.png-5773dc675c1b3d83b61a94470a9ac705.s3tc.ctex"
+uid="uid://dc5tupnehj3jk"
+path.s3tc="res://.godot/imported/snake-sprite-N.png-af63f7b4d117f5e8d67d4b939bbfa6cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://graphics/enemy/snake/snake-sprite-E.png"
-dest_files=["res://.godot/imported/snake-sprite-E.png-5773dc675c1b3d83b61a94470a9ac705.s3tc.ctex"]
+source_file="res://graphics/enemy/snake/North/snake-sprite-N.png"
+dest_files=["res://.godot/imported/snake-sprite-N.png-af63f7b4d117f5e8d67d4b939bbfa6cf.s3tc.ctex"]
 
 [params]
 

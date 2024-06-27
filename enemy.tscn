@@ -1,95 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://dno6hc6a6t56n"]
+[gd_scene load_steps=7 format=3 uid="uid://dno6hc6a6t56n"]
 
-[ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="1_blfhj"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_it2wx"]
-[ext_resource type="Texture2D" uid="uid://xiijvo8ktb8f" path="res://graphics/enemy/snake/snake-sprite-E.png" id="3_o2my7"]
-[ext_resource type="Texture2D" uid="uid://dc5tupnehj3jk" path="res://graphics/enemy/snake/snake-sprite-N.png" id="4_yhgli"]
-[ext_resource type="Texture2D" uid="uid://bi7nusnim7hbl" path="res://graphics/enemy/snake/snake-sprite-NE.png" id="5_lt2hs"]
-[ext_resource type="Texture2D" uid="uid://bs2dy2viuv2yg" path="res://graphics/enemy/snake/snake-sprite-NW.png" id="6_5mx7a"]
-[ext_resource type="Texture2D" uid="uid://cncf47xprhkar" path="res://graphics/enemy/snake/snake-sprite-S.png" id="7_gcstn"]
-[ext_resource type="Texture2D" uid="uid://dbh6wxv760qom" path="res://graphics/enemy/snake/snake-sprite-SE.png" id="8_vl2xi"]
-[ext_resource type="Texture2D" uid="uid://cud5w37lr7loo" path="res://graphics/enemy/snake/snake-sprite-SW.png" id="9_gkh21"]
-[ext_resource type="Texture2D" uid="uid://ckil3ebb5d7ad" path="res://graphics/enemy/snake/snake-sprite-W.png" id="9_tdd7w"]
+[ext_resource type="Script" path="res://enemy_exports.gd" id="1_w4igd"]
+[ext_resource type="Texture2D" uid="uid://xiijvo8ktb8f" path="res://graphics/enemy/snake/East/snake-sprite-E.png" id="4_4mqey"]
 [ext_resource type="Script" path="res://enemyattack.gd" id="11_ef6eu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsfxg"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_b8joq"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6ep7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_blfhj")
+"texture": ExtResource("4_4mqey")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_o2my7")
-}],
-"loop": true,
-"name": &"east",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_yhgli")
-}],
-"loop": true,
-"name": &"north",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_lt2hs")
-}],
-"loop": true,
-"name": &"north east",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_5mx7a")
-}],
-"loop": true,
-"name": &"north west",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_gcstn")
-}],
-"loop": true,
-"name": &"south",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_vl2xi")
-}],
-"loop": true,
-"name": &"south east",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_gkh21")
-}],
-"loop": true,
-"name": &"south west",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_tdd7w")
-}],
-"loop": true,
-"name": &"west",
-"speed": 5.0
 }]
 
 [node name="Enemy" type="Node3D"]
+script = ExtResource("1_w4igd")
 
 [node name="EnemyBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_it2wx")
@@ -97,12 +27,11 @@ script = ExtResource("1_it2wx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBody3D"]
 shape = SubResource("CapsuleShape3D_tsfxg")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="EnemyBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.484169, 0)
-billboard = 1
-no_depth_test = true
-sprite_frames = SubResource("SpriteFrames_b8joq")
-animation = &"south west"
-
 [node name="Node3D" type="Node3D" parent="EnemyBody3D"]
 script = ExtResource("11_ef6eu")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="EnemyBody3D"]
+billboard = 1
+no_depth_test = true
+alpha_cut = 1
+sprite_frames = SubResource("SpriteFrames_b6ep7")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxo5teqqx6wvo"]
+[gd_scene load_steps=14 format=3 uid="uid://dxo5teqqx6wvo"]
 
+[ext_resource type="Script" path="res://herb.gd" id="1_4n2kj"]
 [ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="1_qin03"]
 [ext_resource type="Texture2D" uid="uid://b57ltx8ax77bt" path="res://Projectile_Placeholder.png" id="2_bolyu"]
 
@@ -74,6 +75,7 @@ material = SubResource("StandardMaterial3D_lxetj")
 size = Vector2(0.2, 0.2)
 
 [node name="Herb" type="Node3D"]
+script = ExtResource("1_4n2kj")
 
 [node name="HerbArea3D" type="Area3D" parent="."]
 script = SubResource("GDScript_wna60")

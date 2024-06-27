@@ -4,7 +4,7 @@ extends Node3D
 
 
 
-var wand_modifiers=["explosion"] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
+#var wand_modifiers=["explosion"] # should be a couple of strings which are called in projectile.gd to modify the projectile. 
 
 const default_reload=0.25; # default rate of fire
 
@@ -16,7 +16,11 @@ var projectile_map
 var projectile_scene
 var parent
 
-const proj_speed = 5.0
+var wand_modifiers=[];
+
+
+
+var proj_speed = 5.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	body = $".."
