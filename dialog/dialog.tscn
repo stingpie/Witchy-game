@@ -40,7 +40,7 @@ autowrap_mode = 3
 position = Vector2(-800, 0)
 
 [node name="Left Character" type="AnimatedSprite2D" parent="Node2D2"]
-scale = Vector2(0.680002, 0.680002)
+scale = Vector2(-0.68, 0.68)
 sprite_frames = SubResource("SpriteFrames_fkqqv")
 
 [node name="Node2D3" type="Node2D" parent="."]

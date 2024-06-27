@@ -33,12 +33,23 @@ func _process(delta):
 	pass
 
 
+const dim = 0.5
+
 func show_dialog():
 	if(dialog_index >= len(dialog)):
 		is_closing=true
 		time = 0
 	else:
-		$Node2D/Node2D/Label.text = dialog[dialog_index]
+		var line = dialog[dialog_index]
+		
+		if(line[0]=="B"):
+			$"Node2D2/Left Character".modulate = Color(dim,dim,dim,1)
+			$"Node2D3/Right Character".modulate = Color(1,1,1,1)
+		else:
+			$"Node2D3/Right Character".modulate = Color(dim,dim,dim,1)
+			$"Node2D2/Left Character".modulate = Color(1,1,1,1)
+			
+		$Node2D/Node2D/Label.text = line.substr(2,-1)
 		if Input.is_action_just_pressed("interact") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			dialog_index += 1
 
@@ -63,13 +74,17 @@ func begin(delta):
 	
 
 func close(delta):
-	if(is_open):
-		is_closing=true
-		time+=delta*speed
+	is_closing=true
+	is_open=false
+	
+	time+=delta*speed
+	if(time<1):
+		text_box.get_child(0).position.y = -text_distance + curve.sample(time)*text_distance
+		left_char.get_child(0).position.x = char_distance - curve.sample(time)*char_distance
+		right_char.get_child(0).position.x = -char_distance + curve.sample(time)*char_distance
+	else:
+		text_box.get_child(0).position.y = 0
+		left_char.get_child(0).position.x = 0
+		right_char.get_child(0).position.x = 0
 		
-		if(time<1):
-			text_box.get_child(0).position.y = -curve.sample(1-time)*text_distance
-			left_char.get_child(0).position.x = curve.sample(1-time)*char_distance
-			right_char.get_child(0).position.x = -curve.sample(1-time)*char_distance
-		else:
-			is_closing=false
+		is_closing=false
