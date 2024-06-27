@@ -156,7 +156,7 @@ func _physics_process(delta):
 			time_effects.erase(event)
 	
 	if(Input.is_action_just_pressed("time spell")):
-		HP -= 10
+		damage(10)
 		var event = TimeEvent.new()
 		event.type = "HP"
 		event.variable=10
