@@ -3,10 +3,11 @@ extends CharacterBody3D
 var damage =10
 var made_by;
 
-const lifespan=10;
+var lifespan=10;
 var time_left = lifespan;
 
 var initial_speed=0;
+var wind_dir=Vector3(1,0,1)
 
 var wand_modifiers=[]
 
@@ -79,7 +80,53 @@ func _physics_process(delta):
 			if lifespan - time_left >0:
 				velocity += Vector3(0,1,0).cross(velocity).normalized() * initial_speed/10;
 		
+		if modifier == "wave v":
+			velocity +=  sin(float(Time.get_ticks_msec())/200) * Vector3(0,1,0).cross(velocity).normalized() * initial_speed/10;
+		
+		if modifier == "wave p":
+			position +=  sin(float(Time.get_ticks_msec())/200) * Vector3(0,1,0).cross(velocity).normalized() *0.1;
+		
+		if modifier == "scatter":
+			if(abs(sin(float(Time.get_ticks_msec())/1000))<0.1):
+				
+				wind_dir = (wind_dir *  Vector3(randf()-0.5, 0, randf()-0.5)).normalized()
+			velocity =wind_dir*initial_speed;
 			
+		if modifier == "wind":
+			if(abs(sin(float(Time.get_ticks_msec())/1000))<0.01):
+				
+				wind_dir = (wind_dir *  Vector3(randf()-0.5, 0, randf()-0.5)).normalized()
+			position += wind_dir*sin(float(Time.get_ticks_msec())/1000)*initial_speed*delta;
+		
+		if modifier == "explosion":
+			if lifespan - time_left > 1:
+				for i in range(10):
+					var projectile = self.duplicate() # make a duplicate of this projectile
+				
+				
+					var rand = Vector3(sin(float(i)*6.28/10), 0, cos(float(i)*6.28/10)).normalized()
+					
+					projectile.velocity = rand * Vector3(0,1,0).cross(velocity).normalized()*initial_speed; # push the projectile to one side. 
+					projectile.position += rand * Vector3(0,1,0).cross(velocity).normalized()*0.1; # teleport projectile to one side (proj can currently collide with eachother, so this stops that.)
+					
+					wand_modifiers.erase("explosion") # prevent this new projectile from splitting.
+					
+					projectile.wand_modifiers = wand_modifiers # give the new projectile the same modifiers as this one.
+					projectile.wand_modifiers.append("lifespan 1")
+					
+					
+					projectile.time_left=lifespan;
+					
+					projectile.initial_speed = initial_speed
+					
+					
+					add_sibling(projectile) # put the projectile into the world. 
+				queue_free()
+		
+		if modifier.substr(0,8) == "lifespan":
+			lifespan = int(modifier.substr(8,-1))
+			if(time_left>lifespan):
+				time_left = lifespan
 	move_and_slide()
 
 

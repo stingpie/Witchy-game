@@ -81,7 +81,6 @@ radius = 0.179474
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_wwi8f")
 
