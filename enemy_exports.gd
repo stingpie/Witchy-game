@@ -16,6 +16,7 @@ func _ready():
 	$"EnemyBody3D/Node3D".wand_modifiers = spells
 	$"EnemyBody3D/Node3D".proj_speed = proj_speed
 	var dir = DirAccess.open(sprite_dir)
+	$"EnemyBody3D/AnimatedSprite3D".sprite_frames = SpriteFrames.new()
 	for directory in dir.get_directories():
 		$"EnemyBody3D/AnimatedSprite3D".sprite_frames.add_animation(directory)
 		for frame in DirAccess.open(sprite_dir+"/"+directory).get_files():

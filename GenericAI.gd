@@ -16,7 +16,7 @@ var state ="stand"
 
 var close=5
 var far = 20
-const curl=10
+const curl=5
 
 
 func get_control(Player, Enemy):
