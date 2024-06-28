@@ -8,6 +8,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0501312, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 1.10078, 0)
+billboard = 1
 texture = ExtResource("1_1e0u1")
 region_enabled = true
 region_rect = Rect2(0, 0, 474, 330)

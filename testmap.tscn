@@ -51,6 +51,7 @@ far = 12.0
 
 [node name="Enemy3" parent="." instance=ExtResource("4_ocgs2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48847, 1, 6.97804)
+spells = ["explosion"]
 close = 6.0
 far = 7.0
 ai = "hover"
