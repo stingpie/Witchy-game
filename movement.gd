@@ -9,7 +9,7 @@ const JUMP_VELOCITY = 4.5
 const max_speed = 15.0
 
 var inventory = {}
-var HP = 100;
+var HP = 1000000;
 
 const TimeEvent = preload("res://TimeEvent.gd")
 
@@ -74,7 +74,7 @@ func _physics_process(delta):
 			brew_scene.set_process(true);
 			brew_scene.set_physics_process(true);
 			for node in $"../..".get_children():
-				print(node, " ", node.name != $"../".name )
+				
 				if(node.name != $"../".name):
 					node.propagate_call("set_process", [false])
 					node.propagate_call("set_physics_process", [false])
@@ -96,7 +96,6 @@ func _physics_process(delta):
 			brew_scene.set_process(false);
 			brew_scene.set_physics_process(false);
 			for node in $"../..".get_children():
-				print(node, " ", node.name != $"../".name )
 				if(node.name != $"../".name):
 					node.propagate_call("set_process", [true])
 					node.propagate_call("set_physics_process", [true])
