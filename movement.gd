@@ -13,6 +13,9 @@ var HP = 100;
 
 const TimeEvent = preload("res://TimeEvent.gd")
 
+var brew_scene = preload("res://brewCauldron.tscn")
+
+
 var time_effects=[]
 
 
@@ -30,8 +33,11 @@ var force = Vector3(0,0,0)
 var acceleration = Vector3(0,0,0)
 @onready var _animated_sprite = $AnimatedSprite3D
 
-func _on_ready():
-	
+func _ready():
+	brew_scene = brew_scene.instantiate()
+	add_child(brew_scene)
+	brew_scene.visible = false;
+	brew_scene.set_process(false);
 	pass
 
 func _physics_process(delta):
@@ -63,35 +69,46 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("open inventory"):
 		# toggle inventory screen
-		
-		if(in_inventory): #if the inventory screen is already open
+		if not in_inventory:
+			brew_scene.visible = true;
+			brew_scene.set_process(true);
+			brew_scene.set_physics_process(true);
+			for node in $"../..".get_children():
+				print(node, " ", node.name != $"../".name )
+				if(node.name != $"../".name):
+					node.propagate_call("set_process", [false])
+					node.propagate_call("set_physics_process", [false])
+					node.visible = false;
+			$Node3D.visible=false
+			$Node3D.set_process(false)
+			brew_scene.get_node("Camera3D").make_current()
+			$AnimatedSprite3D.visible=false
+			$Camera3D/CombatGui.visible=false
 			
-			# open the combat gui
-			$"Camera3D/CombatGui".visible = true;
-			$"Camera3D/CombatGui".set_process(true);
-			
-			# close the inventory gui
-			$"Camera3D/Inventory".visible = false;
-			$"Camera3D/Inventory".set_process(false);
-			
-			#enable pointer (and firing spells)
-			$"Node3D".set_process(true)
-			
-			in_inventory = false
-		else:
-			# close the combat gui
-			$"Camera3D/CombatGui".visible = false;
-			$"Camera3D/CombatGui".set_process(false);
-			
-			#open the inventory gui
-			$"Camera3D/Inventory".visible = true;
-			$"Camera3D/Inventory".set_process(true);
-			
-			# disable the pointer (and firing spells)
-			$"Node3D".set_process(false)
-		
 			in_inventory = true
-	
+			
+			brew_scene.get_node("Bookshelf left").update_items(inventory)
+			
+			brew_scene.get_node("Bookshelf right").update_wands($Camera3D/CombatGui/Node2D.spells)
+			
+		else:
+			brew_scene.visible = false;
+			brew_scene.set_process(false);
+			brew_scene.set_physics_process(false);
+			for node in $"../..".get_children():
+				print(node, " ", node.name != $"../".name )
+				if(node.name != $"../".name):
+					node.propagate_call("set_process", [true])
+					node.propagate_call("set_physics_process", [true])
+					node.visible = true;
+			$Node3D.visible=true
+			$Node3D.set_process(true)
+			$Camera3D.make_current()
+			$AnimatedSprite3D.visible=true
+			$Camera3D/CombatGui.visible=true
+			in_inventory = false
+			
+	#
 	if direction and (state == "running" or state == "slow running") and not in_inventory:
 		# apply a force to the character. 
 		# Here, the force is proportional to the change in angle between the new and old direction.

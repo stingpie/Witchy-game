@@ -1,0 +1,299 @@
+[gd_scene load_steps=4 format=3 uid="uid://ydf1um1lmvn"]
+
+[ext_resource type="Script" path="res://Bookshelf.gd" id="1_fhvb2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0c4kv"]
+radius = 0.403887
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sqph3"]
+radius = 0.145568
+
+[node name="BrewCauldron" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301514, -0.157166, 0)
+size = Vector3(2.31714, 0.685669, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0946268, -0.330255, 1.4429)
+size = Vector3(9.52196, 0.339489, 3.8858)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154739, 2.19958, -0.421143)
+size = Vector3(9.55692, 5.39917, 0.157715)
+
+[node name="Cauldron" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.136441)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Cauldron"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746439, 0)
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Cauldron"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00973, 0)
+operation = 2
+
+[node name="dropzone" type="Area3D" parent="Cauldron"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/dropzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86221, 0)
+shape = SubResource("SphereShape3D_0c4kv")
+
+[node name="dropzone2" type="Area3D" parent="Cauldron"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.844689)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/dropzone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.426612, -0.340023)
+shape = SubResource("SphereShape3D_sqph3")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Cauldron"]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Cauldron/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.352476, 0.265144)
+inner_radius = 0.207718
+outer_radius = 0.272115
+sides = 36
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Cauldron/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853341, 0.396339)
+operation = 1
+
+[node name="Bookshelf left" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27059, 0, 0)
+script = ExtResource("1_fhvb2")
+
+[node name="positions" type="Node3D" parent="Bookshelf left"]
+
+[node name="p 1" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 1.96833, 0)
+
+[node name="p 2" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 1.96833, 0)
+
+[node name="p 3" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 1.96833, 0)
+
+[node name="p 4" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 1.96833, 0)
+
+[node name="p 5" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 1.36086, 0)
+
+[node name="p 6" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 1.36086, 0)
+
+[node name="p 7" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 1.36086, 0)
+
+[node name="p 8" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 1.36086, 0)
+
+[node name="p 9" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 0.742455, 0)
+
+[node name="p 10" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 0.742455, 0)
+
+[node name="p 11" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 0.742455, 0)
+
+[node name="p 12" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 0.742455, 0)
+
+[node name="p 13" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 0.134992, 0)
+
+[node name="p 14" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 0.134992, 0)
+
+[node name="p 15" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 0.134992, 0)
+
+[node name="p 16" type="Node3D" parent="Bookshelf left/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 0.134992, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Bookshelf left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159424, 1.11438, -0.0770874)
+size = Vector3(1.78857, 2.55151, 0.525513)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Bookshelf left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164337, 0.226715, -0.0213928)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Bookshelf left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158731, 0.82348, -0.0193326)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Bookshelf left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164337, 1.44737, -0.0213928)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Bookshelf left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158731, 2.04413, -0.0193326)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="Bookshelf right" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02028, 0, 0)
+script = ExtResource("1_fhvb2")
+
+[node name="positions" type="Node3D" parent="Bookshelf right"]
+
+[node name="p 1" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 1.96833, 0)
+
+[node name="p 2" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 1.96833, 0)
+
+[node name="p 3" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 1.96833, 0)
+
+[node name="p 4" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 1.96833, 0)
+
+[node name="p 5" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 1.36086, 0)
+
+[node name="p 6" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 1.36086, 0)
+
+[node name="p 7" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 1.36086, 0)
+
+[node name="p 8" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 1.36086, 0)
+
+[node name="p 9" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 0.742455, 0)
+
+[node name="p 10" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 0.742455, 0)
+
+[node name="p 11" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 0.742455, 0)
+
+[node name="p 12" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 0.742455, 0)
+
+[node name="p 13" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439376, 0.134992, 0)
+
+[node name="p 14" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0708785, 0.134992, 0)
+
+[node name="p 15" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284087, 0.134992, 0)
+
+[node name="p 16" type="Node3D" parent="Bookshelf right/positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668955, 0.134992, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159424, 1.11438, -0.0770874)
+size = Vector3(1.78857, 2.55151, 0.525513)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164337, 0.226715, -0.0213928)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158731, 0.82348, -0.0193326)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164337, 1.44737, -0.0213928)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158731, 2.04413, -0.0193326)
+operation = 2
+size = Vector3(1.57416, 0.497009, 0.414124)
+
+[node name="Label3D" type="Label3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 2.00461, 0.186546)
+text = "1"
+
+[node name="Label3D2" type="Label3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 1.47751, 0.186546)
+text = "2"
+
+[node name="Label3D3" type="Label3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 0.864272, 0.186546)
+text = "3"
+
+[node name="Label3D4" type="Label3D" parent="Bookshelf right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 0.249214, 0.186546)
+text = "4"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64359, 1.16002)
+omni_range = 11.475
+
+[node name="candle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.919566, -0.33456, -0.911364)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="candle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657905, 1.20857)
+radius = 0.0562726
+height = 0.246569
+
+[node name="OmniLight3D" type="OmniLight3D" parent="candle/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161876, 0)
+omni_range = 0.5
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="candle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.126712, 0.603316, 1.14841)
+radius = 0.0562726
+height = 0.145313
+
+[node name="OmniLight3D" type="OmniLight3D" parent="candle/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0960422, 0)
+omni_range = 0.5
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="candle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0744758, 0.670819, 1.28279)
+radius = 0.0562726
+height = 0.306906
+
+[node name="OmniLight3D" type="OmniLight3D" parent="candle/CSGCylinder3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206303, 0)
+omni_range = 0.5
+
+[node name="candle2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50629, 1.80003, -1.16206)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="candle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657905, 1.20857)
+radius = 0.0562726
+height = 0.246569
+
+[node name="OmniLight3D" type="OmniLight3D" parent="candle2/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161876, 0)
+omni_range = 0.5
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="candle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.126712, 0.603316, 1.14841)
+radius = 0.0562726
+height = 0.145313
+
+[node name="OmniLight3D" type="OmniLight3D" parent="candle2/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0960422, 0)
+omni_range = 0.5
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="candle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0744758, 0.670819, 1.28279)
+radius = 0.0562726
+height = 0.306906
+
+[node name="OmniLight3D" type="OmniLight3D" parent="candle2/CSGCylinder3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206303, 0)
+omni_range = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34609, 2.60033)
