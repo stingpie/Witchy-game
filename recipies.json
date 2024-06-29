@@ -1,0 +1,67 @@
+[
+	{
+		"ingredients":[
+			"eye of newt", 
+			"fenny snake", 
+			"toe of frog", 
+			"wool of bat", 
+			"tongue of dog", 
+			"fork of adder", 
+			"sting of worm", 
+			"leg of lizard", 
+			"wing of howlet",
+			"blood of baboon",
+			"dragon ass"
+		],
+		"result":"crazy spell"
+	},
+	{
+		"ingredients":[
+			"wool of bat",
+			"wing of howlet",
+			"leg of lizard"
+		],
+		"result": "wave v"
+	},
+	{
+		"ingredients":[
+			"wool of bat",
+			"wing of howlet",
+			"eye of newt"
+		],
+		"result":"wave p"
+	},
+	{
+		"ingredients":[
+			"wool of bat",
+			"wing of howlet",
+			"toe of frog"
+		],
+		"result":"wind"
+	},
+	{
+		"ingredients":[
+			"fenny snake",
+			"sting of worm",
+			"blood of baboon"
+		],
+		"result":"scatter"
+	},
+	{
+		"ingredients":[
+			"fork of adder",
+			"wool of bat",
+			"eye of newt"
+		],
+		"result": "spiral"
+	},
+	{
+		"ingredients":[
+			"dragon ass",
+			"blood of baboon",
+			"tongue of dog"
+		],
+		"result":"explosion"
+	}
+	
+]

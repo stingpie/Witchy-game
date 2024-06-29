@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var spells = [["split", "split", "split"],["decelerate"],["decelerate","split"],[]]
+var spells = [["wind"],["decelerate"],["decelerate","split"],[]]
 
 var spell_index=0;
 const max_spells=4;
