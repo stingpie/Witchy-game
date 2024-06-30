@@ -9,14 +9,16 @@ const JUMP_VELOCITY = 4.5
 const max_speed = 15.0
 
 var inventory = {}
-var HP = 1000000;
+var HP = 100;
 
 const TimeEvent = preload("res://TimeEvent.gd")
 
 var brew_scene = preload("res://brewCauldron.tscn")
-
+const accel = preload("res://pseudoAcceleration.tres")
 
 var time_effects=[]
+
+var input_duration=0
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -60,7 +62,10 @@ func _physics_process(delta):
 	var input_dir = Vector2(Input.get_axis("ui_left","ui_right"), Input.get_axis("ui_up", "ui_down")) 
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))#.normalized()
 
-
+	if(input_dir.length()>0):
+		input_duration += delta
+	else:
+		input_duration = 0
 	
 	if(direction):
 		state = "running"
@@ -130,8 +135,8 @@ func _physics_process(delta):
 		
 		# this is the most basic movement system. The velocity is just set as the direction you're traveling. 
 		# this is the most responsive movement, but it is a very brutish way of doing things.
-		velocity.x = direction.x * SPEED if state == "running" else SPEED/2
-		velocity.z = direction.z * SPEED if state == "running" else SPEED/2
+		velocity.x = direction.x * SPEED * (accel.sample(input_duration) if input_duration<1 else 1)
+		velocity.z = direction.z * SPEED * (accel.sample(input_duration) if input_duration<1 else 1)
 		
 		
 			# * (2-thresh)*( 1 + max(0, thresh-velocity.dot(direction)))

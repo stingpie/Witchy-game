@@ -32,10 +32,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.136441)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Cauldron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746439, 0)
+radial_segments = 22
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="Cauldron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00973, 0)
 operation = 2
+radial_segments = 22
 
 [node name="dropzone" type="Area3D" parent="Cauldron"]
 
@@ -59,7 +61,7 @@ outer_radius = 0.272115
 sides = 36
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Cauldron/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853341, 0.396339)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853341, 0.888962)
 operation = 1
 
 [node name="Bookshelf left" type="CSGCombiner3D" parent="."]
