@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ydf1um1lmvn"]
+[gd_scene load_steps=6 format=3 uid="uid://ydf1um1lmvn"]
 
 [ext_resource type="Script" path="res://Bookshelf.gd" id="1_fhvb2"]
+[ext_resource type="Script" path="res://Cauldron.gd" id="1_lfik6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0c4kv"]
 radius = 0.403887
@@ -29,6 +30,7 @@ size = Vector3(9.55692, 5.39917, 0.157715)
 
 [node name="Cauldron" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.136441)
+script = ExtResource("1_lfik6")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Cauldron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746439, 0)
@@ -40,15 +42,18 @@ operation = 2
 radial_segments = 22
 
 [node name="dropzone" type="Area3D" parent="Cauldron"]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/dropzone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86221, 0)
 shape = SubResource("SphereShape3D_0c4kv")
 
-[node name="dropzone2" type="Area3D" parent="Cauldron"]
+[node name="faucet" type="Area3D" parent="Cauldron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.844689)
+collision_layer = 32768
+collision_mask = 32768
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/dropzone2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/faucet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.426612, -0.340023)
 shape = SubResource("SphereShape3D_sqph3")
 
@@ -333,3 +338,6 @@ omni_range = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34609, 2.60033)
+
+[connection signal="area_entered" from="Cauldron/dropzone" to="Cauldron" method="_on_dropzone_area_entered"]
+[connection signal="input_event" from="Cauldron/faucet" to="Cauldron" method="_on_faucet_input_event"]

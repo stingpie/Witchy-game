@@ -8,6 +8,8 @@ func update_items(items):
 		var ditem = dragitem.instantiate()
 		ditem.set_item(item, load("res://icon.svg"))
 		$positions.get_child(iter).add_child(ditem)
+		iter +=1
+		print(ditem)
 
 
 func update_wands(wands):
