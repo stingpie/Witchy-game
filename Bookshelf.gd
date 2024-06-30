@@ -16,3 +16,8 @@ func update_wands(wands):
 			var ditem = dragitem.instantiate()
 			ditem.set_item(wands[i][j], load("res://icon.svg"))
 			$positions.get_child(i*4+j).add_child(ditem)
+
+func clear():
+	for i in range(min(16,$positions.get_child_count())):
+		if($positions.get_child(i).get_child_count()>0 and  $positions.get_child(i).get_child(0)):
+			$positions.get_child(i).get_child(0).queue_free()

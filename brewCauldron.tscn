@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ydf1um1lmvn"]
+[gd_scene load_steps=5 format=3 uid="uid://ydf1um1lmvn"]
 
 [ext_resource type="Script" path="res://Bookshelf.gd" id="1_fhvb2"]
 
@@ -7,6 +7,9 @@ radius = 0.403887
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sqph3"]
 radius = 0.145568
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7aee8"]
+size = Vector3(1.61328, 0.489868, 0.494141)
 
 [node name="BrewCauldron" type="Node3D"]
 
@@ -215,21 +218,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158731, 2.04413, -0.0193326
 operation = 2
 size = Vector3(1.57416, 0.497009, 0.414124)
 
-[node name="Label3D" type="Label3D" parent="Bookshelf right"]
+[node name="Label3D1" type="Label3D" parent="Bookshelf right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 2.00461, 0.186546)
 text = "1"
+
+[node name="Area3D" type="Area3D" parent="Bookshelf right/Label3D1"]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf right/Label3D1/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.854216, 0.0375643, -0.255737)
+shape = SubResource("BoxShape3D_7aee8")
 
 [node name="Label3D2" type="Label3D" parent="Bookshelf right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 1.47751, 0.186546)
 text = "2"
 
+[node name="Area3D" type="Area3D" parent="Bookshelf right/Label3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0665114, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf right/Label3D2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.854216, 0.0375643, -0.255737)
+shape = SubResource("BoxShape3D_7aee8")
+
 [node name="Label3D3" type="Label3D" parent="Bookshelf right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 0.864272, 0.186546)
 text = "3"
 
+[node name="Area3D" type="Area3D" parent="Bookshelf right/Label3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0816937, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf right/Label3D3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.854216, 0.0375643, -0.255737)
+shape = SubResource("BoxShape3D_7aee8")
+
 [node name="Label3D4" type="Label3D" parent="Bookshelf right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678682, 0.249214, 0.186546)
 text = "4"
+
+[node name="Area3D" type="Area3D" parent="Bookshelf right/Label3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062705, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf right/Label3D4/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.854216, 0.0375643, -0.255737)
+shape = SubResource("BoxShape3D_7aee8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64359, 1.16002)

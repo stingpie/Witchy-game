@@ -71,8 +71,8 @@ func _physics_process(delta):
 		# toggle inventory screen
 		if not in_inventory:
 			brew_scene.visible = true;
-			brew_scene.set_process(true);
-			brew_scene.set_physics_process(true);
+			brew_scene.propagate_call("set_process", [true])
+			brew_scene.propagate_call("set_physics_process", [true])
 			for node in $"../..".get_children():
 				
 				if(node.name != $"../".name):
@@ -93,8 +93,8 @@ func _physics_process(delta):
 			
 		else:
 			brew_scene.visible = false;
-			brew_scene.set_process(false);
-			brew_scene.set_physics_process(false);
+			brew_scene.propagate_call("set_process", [false])
+			brew_scene.propagate_call("set_physics_process", [false])
 			for node in $"../..".get_children():
 				if(node.name != $"../".name):
 					node.propagate_call("set_process", [true])
@@ -105,6 +105,15 @@ func _physics_process(delta):
 			$Camera3D.make_current()
 			$AnimatedSprite3D.visible=true
 			$Camera3D/CombatGui.visible=true
+			
+			for i in range(4):
+				$"Camera3D/CombatGui/Node2D".spells[i]=[]
+				for brew in brew_scene.get_node("Bookshelf right/Label3D"+str(i+1)+"/Area3D").get_overlapping_areas():
+					$"Camera3D/CombatGui/Node2D".spells[i].append(brew.get_parent().item)
+			
+			brew_scene.get_node("Bookshelf right").clear()
+			brew_scene.get_node("Bookshelf left").clear()
+			
 			in_inventory = false
 			
 	#
