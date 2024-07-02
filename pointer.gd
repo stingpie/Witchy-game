@@ -55,7 +55,7 @@ func _process(delta):
 		var direction = (Vector3(position3D.x, player_body.position.y, position3D.z) - player_body.position).normalized()
 		# set the velocity of the projectile to the player's vel, plus the direction times speed. 
 		# (Ie, make the projectile move relative to the player)
-		projectile.velocity = player_body.velocity + direction * proj_speed
+		projectile.velocity = (Vector3(0,0,0) if "abs vel" in wand_modifiers else player_body.velocity) + direction * proj_speed
 		
 		# set the position of the particle at the end of the player's pointer.
 		projectile.position.x = player_body.position.x + direction.x * 1.15

@@ -32,6 +32,7 @@ func _on_dropzone_area_entered(area):
 		area.get_parent().is_dragged = false
 		area.get_parent().position= Vector3(0,0,0)
 		area.get_parent().get_node("Sprite3D").no_depth_test=false
+		$AnimatedSprite3D.play("filled")
 	
 	pass # Replace with function body.
 
@@ -40,9 +41,8 @@ func _on_faucet_input_event(camera, event, position, normal, shape_idx):
 	if event.is_action_pressed("left click"):
 		#print(contents)
 		for recipe in recipies:
-			#print(recipe)
+			#dprint(recipe)
 			if(arrays_have_same_content(recipe['ingredients'], contents)):
-				print(":)")
 				var item = item_schema.instantiate()
 				item.set_item(recipe['result'], load("res://icon.svg"))
 				
@@ -57,6 +57,7 @@ func _on_faucet_input_event(camera, event, position, normal, shape_idx):
 				$"../Bookshelf right/positions/p 1".add_child(item)
 				pass
 		contents=[]
+		$AnimatedSprite3D.play("empty")
 	pass # Replace with function body.
 
 

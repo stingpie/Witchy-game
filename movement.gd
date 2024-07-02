@@ -121,7 +121,6 @@ func _physics_process(delta):
 			
 			in_inventory = false
 			
-	#
 	if direction and (state == "running" or state == "slow running") and not in_inventory:
 		# apply a force to the character. 
 		# Here, the force is proportional to the change in angle between the new and old direction.
@@ -135,8 +134,8 @@ func _physics_process(delta):
 		
 		# this is the most basic movement system. The velocity is just set as the direction you're traveling. 
 		# this is the most responsive movement, but it is a very brutish way of doing things.
-		velocity.x = direction.x * SPEED * (accel.sample(input_duration) if input_duration<1 else 1)
-		velocity.z = direction.z * SPEED * (accel.sample(input_duration) if input_duration<1 else 1)
+		velocity.x = direction.x * SPEED * (accel.sample(input_duration) if input_duration<1 and is_on_floor() else 1)
+		velocity.z = direction.z * SPEED * (accel.sample(input_duration) if input_duration<1 and is_on_floor() else 1)
 		
 		
 			# * (2-thresh)*( 1 + max(0, thresh-velocity.dot(direction)))

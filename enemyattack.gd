@@ -48,7 +48,7 @@ func fire_proj():
 		direction.y=0
 		# set the velocity of the projectile to the player's vel, plus the direction times speed. 
 		# (Ie, make the projectile move relative to the player)
-		projectile.velocity = body.velocity + direction * proj_speed
+		projectile.velocity = (Vector3(0,0,0) if "abs vel" in wand_modifiers else body.velocity) + direction * proj_speed
 		projectile.scale*=1
 		
 		# set the position of the particle at the end of the player's pointer.

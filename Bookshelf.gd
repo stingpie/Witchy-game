@@ -9,7 +9,6 @@ func update_items(items):
 		ditem.set_item(item, load("res://icon.svg"))
 		$positions.get_child(iter).add_child(ditem)
 		iter +=1
-		print(ditem)
 
 
 func update_wands(wands):
@@ -22,4 +21,5 @@ func update_wands(wands):
 func clear():
 	for i in range(min(16,$positions.get_child_count())):
 		if($positions.get_child(i).get_child_count()>0 and  $positions.get_child(i).get_child(0)):
-			$positions.get_child(i).get_child(0).queue_free()
+			for child in $positions.get_child(i).get_children():
+				child.queue_free()

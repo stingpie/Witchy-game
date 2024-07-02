@@ -127,6 +127,8 @@ func _physics_process(delta):
 			lifespan = int(modifier.substr(8,-1))
 			if(time_left>lifespan):
 				time_left = lifespan
+				
+
 	move_and_slide()
 
 

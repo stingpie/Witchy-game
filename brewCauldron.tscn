@@ -1,13 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://ydf1um1lmvn"]
+[gd_scene load_steps=9 format=3 uid="uid://ydf1um1lmvn"]
 
 [ext_resource type="Script" path="res://Bookshelf.gd" id="1_fhvb2"]
 [ext_resource type="Script" path="res://Cauldron.gd" id="1_lfik6"]
+[ext_resource type="Texture2D" uid="uid://crutmqvl3owy0" path="res://graphics/GUI/SpCauldronOpen.png" id="2_pwk3w"]
+[ext_resource type="Texture2D" uid="uid://cmy86jusbf8pf" path="res://graphics/GUI/SpCauldronClosed.png" id="3_wwk70"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0c4kv"]
 radius = 0.403887
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sqph3"]
 radius = 0.145568
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5dqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pwk3w")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wwk70")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7aee8"]
 size = Vector3(1.61328, 0.489868, 0.494141)
@@ -34,10 +55,13 @@ script = ExtResource("1_lfik6")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Cauldron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746439, 0)
+visible = false
 radial_segments = 22
+rings = 17
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="Cauldron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00973, 0)
+visible = false
 operation = 2
 radial_segments = 22
 
@@ -49,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86221, 0)
 shape = SubResource("SphereShape3D_0c4kv")
 
 [node name="faucet" type="Area3D" parent="Cauldron"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.844689)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0882297, 0.728905)
 collision_layer = 32768
 collision_mask = 32768
 
@@ -58,6 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.426612, -0.340023)
 shape = SubResource("SphereShape3D_sqph3")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Cauldron"]
+visible = false
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="Cauldron/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.352476, 0.265144)
@@ -68,6 +93,11 @@ sides = 36
 [node name="CSGBox3D" type="CSGBox3D" parent="Cauldron/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853341, 0.888962)
 operation = 1
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Cauldron"]
+transform = Transform3D(0.1554, 0, 0, 0, 0.1554, 0, 0, 0, 1, 0, 0.323087, 0.372925)
+sprite_frames = SubResource("SpriteFrames_h5dqp")
+animation = &"empty"
 
 [node name="Bookshelf left" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27059, 0, 0)
