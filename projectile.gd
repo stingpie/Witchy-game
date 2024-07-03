@@ -17,6 +17,7 @@ var projectile_scene
 
 func _ready():
 	projectile_scene = preload("res://projectile.tscn")
+	wind_dir = velocity.normalized()
 
 func _physics_process(delta):
 	time_left = max(0, time_left - delta)
@@ -26,7 +27,7 @@ func _physics_process(delta):
 	
 	for modifier in wand_modifiers:
 		if modifier=="decelerate":
-			velocity = velocity / (1+delta)
+			velocity = initial_speed * velocity.normalized() * (2 ** -((lifespan - time_left)))
 			
 		if modifier.substr(0,5) == "split" and not has_split: # split the particle in two after a set period of time.
 			if lifespan - time_left > 0.35:
@@ -127,6 +128,14 @@ func _physics_process(delta):
 			lifespan = int(modifier.substr(8,-1))
 			if(time_left>lifespan):
 				time_left = lifespan
+				
+				
+		if modifier == "heal":
+			if damage>0:
+				damage=-10
+			
+		if modifier == "accelerate":
+			velocity = initial_speed * velocity.normalized() * (2 ** ((lifespan - time_left)))
 				
 
 	move_and_slide()

@@ -189,7 +189,7 @@ func _physics_process(delta):
 			if(effect[0] == "item"):
 				inventory.append(effect[1])
 			if(effect[0] == "Potion"):
-				var wands = $Camera3D/CombatGui/Node2D.spells
+				var wands = $Cameara3D/CombatGui/Node2D.spells
 				var order = [0,1,2,3]
 				order.shuffle()
 				for i in range(4):
@@ -200,10 +200,10 @@ func _physics_process(delta):
 			time_effects.erase(event)
 	
 	if(Input.is_action_just_pressed("time spell")):
-		damage(10)
+		damage(-10)
 		var event = TimeEvent.new()
 		event.type = "HP"
-		event.variable=10
+		event.variable=-10
 		event.duration = 10
 		time_effects.append(event)
 	
