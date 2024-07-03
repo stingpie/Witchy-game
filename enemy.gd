@@ -12,7 +12,7 @@ var HP=100;
 
 
 const animations=["East", "North-East", "North", "North-West", "West", "South-West", "South", "South-East"]
-
+var num_animations=1
 
 var state = "stand"
 
@@ -66,6 +66,10 @@ func _physics_process(delta):
 		state = command['state']
 		direction = Vector2(command['x'], command['y'])
 		
+	if(state == "stand"):
+		if($AnimatedSprite3D.sprite_frames.has_animation("idle")):
+			$AnimatedSprite3D.play("idle")
+		
 
 		
 	
@@ -76,7 +80,7 @@ func _physics_process(delta):
 	# the second line takes the angle and forces it to range between 0 & 7 (inclusive.)
 	# this new value is then used to index into the animations array, which picks the animation to play.
 	var rot = Vector2(-position.x - get_parent().position.x,position.z + get_parent().position.z).angle_to_point(Vector2(-player.position.x,player.position.z))
-	var index = int(round((rot+PI)/(2*PI)*8))%8
+	var index = (int(round((rot+PI)/(2*PI)*num_animations))%num_animations)* 8/num_animations
 	$"AnimatedSprite3D".play(animations[index])
 	
 	

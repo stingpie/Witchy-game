@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ydf1um1lmvn"]
+[gd_scene load_steps=15 format=3 uid="uid://ydf1um1lmvn"]
 
 [ext_resource type="Script" path="res://Bookshelf.gd" id="1_fhvb2"]
 [ext_resource type="Script" path="res://Cauldron.gd" id="1_lfik6"]
 [ext_resource type="Texture2D" uid="uid://crutmqvl3owy0" path="res://graphics/GUI/SpCauldronOpen.png" id="2_pwk3w"]
 [ext_resource type="Texture2D" uid="uid://cmy86jusbf8pf" path="res://graphics/GUI/SpCauldronClosed.png" id="3_wwk70"]
+[ext_resource type="Script" path="res://TimeIndicator.gd" id="5_h0ll0"]
+[ext_resource type="Script" path="res://Timebox.gd" id="5_vaq6b"]
+[ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="6_62oq2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0c4kv"]
 radius = 0.403887
@@ -32,6 +35,15 @@ animations = [{
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7aee8"]
 size = Vector3(1.61328, 0.489868, 0.494141)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kginp"]
+size = Vector3(1.229, 1.31598, 0.0567017)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_22jjh"]
+radius = 0.103883
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d5lu1"]
+size = Vector3(1.03952, 0.719604, 0.696411)
 
 [node name="BrewCauldron" type="Node3D"]
 
@@ -369,5 +381,46 @@ omni_range = 0.5
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34609, 2.60033)
 
+[node name="Time box" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.328, 2.71601, 0)
+script = ExtResource("5_vaq6b")
+
+[node name="Sprite3D" type="Sprite3D" parent="Time box"]
+transform = Transform3D(0.140498, 0, 0, 0, 0.140498, 0, 0, 0, 1, -0.448873, 0.119721, 0.253573)
+texture = ExtResource("6_62oq2")
+
+[node name="Area3D" type="Area3D" parent="Time box/Sprite3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time box/Sprite3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0700722, 0.0081501, -0.00698853)
+shape = SubResource("BoxShape3D_kginp")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Time box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120056, 0.0869141, -0.0761719)
+size = Vector3(1.24011, 0.826172, 0.523438)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Time box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113998, 0.0366211, -0.0761719)
+operation = 2
+size = Vector3(1.04453, 0.725586, 0.523438)
+
+[node name="Label3D" type="Label3D" parent="Time box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544182, -0.291915, 0.197648)
+text = "15"
+script = ExtResource("5_h0ll0")
+
+[node name="Area3D" type="Area3D" parent="Time box/Label3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time box/Label3D/Area3D"]
+shape = SubResource("SphereShape3D_22jjh")
+
+[node name="Area3D" type="Area3D" parent="Time box"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time box/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114426, 0.0380249, -0.151794)
+shape = SubResource("BoxShape3D_d5lu1")
+
 [connection signal="area_entered" from="Cauldron/dropzone" to="Cauldron" method="_on_dropzone_area_entered"]
 [connection signal="input_event" from="Cauldron/faucet" to="Cauldron" method="_on_faucet_input_event"]
+[connection signal="input_event" from="Time box/Sprite3D/Area3D" to="Time box" method="_on_area_3d_input_event"]
+[connection signal="input_event" from="Time box/Label3D/Area3D" to="Time box/Label3D" method="_on_area_3d_input_event"]

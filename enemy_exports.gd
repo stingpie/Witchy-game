@@ -9,7 +9,7 @@ extends Node3D
 @export var ai ="circle"
 
 
-const directions8 = ["North", "North-East", "East", "South-East", "South", "South-West", "West", "North-West"]
+#const directions8 = ["North", "North-East", "East", "South-East", "South", "South-West", "West", "North-West"]
 
 
 func _ready():
@@ -17,12 +17,17 @@ func _ready():
 	$"EnemyBody3D/Node3D".proj_speed = proj_speed
 	var dir = DirAccess.open(sprite_dir)
 	$"EnemyBody3D/AnimatedSprite3D".sprite_frames = SpriteFrames.new()
-	for directory in dir.get_directories():
+	var directories = dir.get_directories()
+	for directory in directories:
 		$"EnemyBody3D/AnimatedSprite3D".sprite_frames.add_animation(directory)
+		#$EnemyBody3D.animations.append(directory)
+		
+		$EnemyBody3D.num_animations=len(directories) - (1 if "idle" in directories else 0)
 		for frame in DirAccess.open(sprite_dir+"/"+directory).get_files():
 			if not "import" in frame:
 				
 				$"EnemyBody3D/AnimatedSprite3D".sprite_frames.add_frame(directory,load(sprite_dir+"/"+directory+"/"+frame) )
+	
 	$"EnemyBody3D".AI.close = close;
 	$"EnemyBody3D".AI.far = far;
 	$"EnemyBody3D".AI.mode = ai;

@@ -96,6 +96,9 @@ func _physics_process(delta):
 			
 			brew_scene.get_node("Bookshelf right").update_wands($Camera3D/CombatGui/Node2D.spells)
 			
+			for effect in time_effects:
+				effect.pause()
+			
 		else:
 			brew_scene.visible = false;
 			brew_scene.propagate_call("set_process", [false])
@@ -120,6 +123,9 @@ func _physics_process(delta):
 			brew_scene.get_node("Bookshelf left").clear()
 			
 			in_inventory = false
+			
+			for effect in time_effects:
+				effect.unpause()
 			
 	if direction and (state == "running" or state == "slow running") and not in_inventory:
 		# apply a force to the character. 
@@ -182,6 +188,15 @@ func _physics_process(delta):
 				HP += effect[1]
 			if(effect[0] == "item"):
 				inventory.append(effect[1])
+			if(effect[0] == "Potion"):
+				var wands = $Camera3D/CombatGui/Node2D.spells
+				var order = [0,1,2,3]
+				order.shuffle()
+				for i in range(4):
+					if(len(wands[order[i]])<4):
+						wands[order[i]].append(effect[1])
+						break
+				
 			time_effects.erase(event)
 	
 	if(Input.is_action_just_pressed("time spell")):
@@ -200,3 +215,6 @@ func damage(amount): # apply damage to player.
 	if(HP<=0):# GAME OVER
 		get_tree().change_scene_to_file("res://game over.tscn")
 		
+
+
+
