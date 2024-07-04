@@ -1,0 +1,45 @@
+[
+	{
+		"cond":["not [example_dialog]"],
+		"dialog":[
+			"A:Hey dude.",
+			"B:You a witch?",
+			"B:What's with that lameass familiar?",
+			"A:Hey! That familiar is named Jellybean, and he or she is very cute.",
+			"B:You don't know the sex of your familiar?",
+			"A:I'm not about to look up 'octopus sex' on the internet.",
+			"B:Touché."
+			],
+		"result":["[example_dialog]"]
+	},
+	{
+		"cond":["[example_dialog]", "not [dragon_ass_quest_given]"],
+		"dialog":[
+			"B:Hey... got any dragon ass?",
+			"A:What?",
+			"B:The herb.",
+			"A:Oh. I don't.",
+			"B:Well if you get any, I can make it worth your while.",
+			"A:Okay."
+			],
+		"result":["[dragon_ass_quest_given]"]
+	},
+	{
+		"cond":["[dragon_ass_quest_given]","give 1 dragon ass", "not [dragon_ass_quest_complete]"],
+		"dialog":[
+			"B:Woooaaaahh! you actually got some!",
+			"A:God, this stinks.",
+			"B:Yeah. this is the strongest strain of wizard weed!",
+			"A:Wizard weed?",
+			"B:It's lung-slaughtering necromancer kush with magical abilities!",
+			"A:What magical abilities?",
+			"B:You turn into a dragon.",
+			"A:Really?",
+			"B:Either that or I've been crawling around on all fours for no reason."
+			],
+		"result":["get_potion 1 cyclone", "[dragon_ass_quest_complete]"]
+	}
+	
+	
+	
+]

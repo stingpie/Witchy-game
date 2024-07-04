@@ -42,6 +42,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -0
 [node name="Enemy" parent="." instance=ExtResource("4_ocgs2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -10)
 spells = ["split", "abs vel"]
+proj_speed = 0.0
 close = 1.0
 far = 12.0
 ai = "ambush"
@@ -49,6 +50,7 @@ ai = "ambush"
 [node name="Enemy2" parent="." instance=ExtResource("4_ocgs2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1557, 1, -10)
 spells = ["split", "abs vel"]
+proj_speed = 0.0
 close = 1.0
 far = 12.0
 ai = "ambush"
@@ -56,17 +58,19 @@ ai = "ambush"
 [node name="Enemy3" parent="." instance=ExtResource("4_ocgs2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48847, 1, 6.97804)
 spells = ["explosion"]
+proj_speed = 0.0
 close = 6.0
 far = 7.0
 ai = "ambush"
 
 [node name="Herb" parent="." instance=ExtResource("5_dbs7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88468, 1.62556, -4.45713)
-herb_type = ":)"
+herb_type = "dragon ass"
 sprite = "res://IdleANIMATIONLESS.png"
 
 [node name="Npc" parent="." instance=ExtResource("6_ntado")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.01021, 0.913975, -1.05627)
+file = "res://dialog/complex-dialog.json"
 sprite = "res://graphics/NPC/guy-standing.png"
 
 [node name="Grass" parent="." instance=ExtResource("5_jroj5")]

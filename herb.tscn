@@ -21,6 +21,7 @@ func _on_body_entered(body):
 			body.inventory[herb_type]+=1
 		else:
 			body.inventory[herb_type] = 1
+		print(body.inventory)
 		queue_free()
 
 "

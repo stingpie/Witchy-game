@@ -14,10 +14,14 @@ var is_opening=false;
 var is_closing=false;
 
 
+func is_closed():
+	return not (is_open or is_opening or is_closing);
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	curve = load("res://dialog/bounce.tres")
+	print(text_box.get_child(0).position)
 	pass # Replace with function body.
 
 
@@ -39,9 +43,9 @@ func show_dialog():
 	if(dialog_index >= len(dialog)):
 		is_closing=true
 		time = 0
+		dialog_index=0
 	else:
 		var line = dialog[dialog_index]
-		
 		if(line[0]=="B"):
 			$"Node2D2/Left Character".modulate = Color(dim,dim,dim,1)
 			$"Node2D3/Right Character".modulate = Color(1,1,1,1)
@@ -86,5 +90,6 @@ func close(delta):
 		text_box.get_child(0).position.y = 0
 		left_char.get_child(0).position.x = 0
 		right_char.get_child(0).position.x = 0
-		
+
 		is_closing=false
+		time=0
