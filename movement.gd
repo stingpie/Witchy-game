@@ -22,6 +22,7 @@ var input_duration=0
 
 var tags=[]
 
+var paused = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -210,7 +211,8 @@ func _physics_process(delta):
 		event.duration = 10
 		time_effects.append(event)
 	
-	move_and_slide()
+	if(not paused):
+		move_and_slide()
 
 func damage(amount): # apply damage to player.
 	HP -= amount
@@ -219,5 +221,22 @@ func damage(amount): # apply damage to player.
 		get_tree().change_scene_to_file("res://game over.tscn")
 		
 
+func pause():
+	for node in $"../..".get_children():
+		if(node.name != $"../".name):
+			node.propagate_call("set_process", [false])
+			node.propagate_call("set_physics_process", [false])
+	for effect in time_effects:
+		effect.pause()
+	paused = true
+	
+func unpause():
+	for node in $"../..".get_children():
+		if(node.name != $"../".name):
+			node.propagate_call("set_process", [true])
+			node.propagate_call("set_physics_process", [true])
+	for effect in time_effects:
+		effect.unpause()
+	paused = false
 
 

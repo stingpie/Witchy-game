@@ -21,7 +21,6 @@ func is_closed():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	curve = load("res://dialog/bounce.tres")
-	print(text_box.get_child(0).position)
 	pass # Replace with function body.
 
 
@@ -33,6 +32,8 @@ func _process(delta):
 		show_dialog()
 	if(is_closing):
 		close(delta)
+	
+	
 	
 	pass
 
@@ -92,4 +93,5 @@ func close(delta):
 		right_char.get_child(0).position.x = 0
 
 		is_closing=false
+		$"../../".unpause()
 		time=0

@@ -42,6 +42,8 @@ func _physics_process(delta):
 								$"../Player/PlayerBody3D".tags.append(result)
 							elif result[0].begins_with("get_potion"):
 								$"../Player/PlayerBody3D".inventory[" ".join(result.split(" ").slice(2))] = int(result.split(" ")[1])
+						
+						$"../Player/PlayerBody3D".pause()
 						$"../Player/PlayerBody3D/Camera3D/Dialog".dialog = conv["dialog"]
 						$"../Player/PlayerBody3D/Camera3D/Dialog".begin(delta)
 					else:
@@ -82,7 +84,7 @@ func _physics_process(delta):
 								elif result.begins_with("get_potion"):
 									$"../Player/PlayerBody3D".inventory[" ".join(result.split(" ").slice(2))] = int(result.split(" ")[1])
 							
-							
+							$"../Player/PlayerBody3D".pause()
 							$"../Player/PlayerBody3D/Camera3D/Dialog".dialog = conv["dialog"]
 							$"../Player/PlayerBody3D/Camera3D/Dialog".begin(delta)
 							break
