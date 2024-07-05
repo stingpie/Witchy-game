@@ -60,7 +60,7 @@ func show_dialog():
 
 const speed=2
 const char_distance = 350
-const text_distance = 250
+const text_distance = 350
 func begin(delta):
 	
 	if(not is_open):

@@ -3,10 +3,36 @@ extends Node3D
 var item=""
 var is_dragged=false;
 var cam
+var textures=[]
 
-func set_item(text, sprite):
+func _init():
+	for texture in DirAccess.open("res://graphics/GUI/fluids/").get_files():
+		if not "import" in texture:
+			textures.append(load("res://graphics/GUI/fluids/"+texture))
+
+func set_item(text):#, sprite):
 	
-	$Sprite3D.set_texture(sprite)
+
+	
+	$Node3D/Sprite3D3.texture = load("res://graphics/GUI/Potion_Bottle_HOLE_MASK.png")
+	
+	$Node3D/Sprite3D3.material_overlay.set_shader_parameter("texture_albedo", textures[text[int(len(text)/2)].to_ascii_buffer()[0]%len(textures)])
+	var main_color =  Vector3(float(text.to_ascii_buffer()[0]%16)/16, float(text.to_ascii_buffer()[1]%16)/16, float(text.to_ascii_buffer()[2]%16)/16)/2 + Vector3(0.5,0.5,0.5)
+	var aux_color = Vector3(float(text.to_ascii_buffer()[-3]%16)/16, float(text.to_ascii_buffer()[-2]%16)/16, float(text.to_ascii_buffer()[-1]%16)/16)/2
+	
+	if(main_color.length()<1):
+		#print("aa")
+		main_color *= main_color.length()
+		#main_color -= main_color
+	
+	if (main_color - aux_color).length()<0.5:
+		main_color *= 1.0/(main_color - aux_color).length()
+		aux_color = Vector3(0,0,0)
+	
+	
+	$Node3D/Sprite3D3.material_overlay.set_shader_parameter("main_color", main_color)
+	$Node3D/Sprite3D3.material_overlay.set_shader_parameter("aux_color", aux_color)
+	
 	item = text
 	
 func _ready():
