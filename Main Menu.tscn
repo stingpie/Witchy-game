@@ -1,0 +1,148 @@
+[gd_scene load_steps=10 format=3 uid="uid://bi78dgl80eetd"]
+
+[ext_resource type="Script" path="res://Main Menu.gd" id="1_3in54"]
+[ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="2_mqk6s"]
+[ext_resource type="Texture2D" uid="uid://cp1tgm76rkd43" path="res://graphics/GUI/intro/intro1a.png" id="3_cbjhj"]
+[ext_resource type="Texture2D" uid="uid://dsbbxwpvu118b" path="res://graphics/GUI/intro/intro1b.png" id="4_q36ag"]
+[ext_resource type="Texture2D" uid="uid://dau5dkt5md72e" path="res://graphics/GUI/intro/intro1c.png" id="5_b8a2l"]
+[ext_resource type="Texture2D" uid="uid://cv07qoe84kso4" path="res://graphics/GUI/intro/intro1d.png" id="6_gley3"]
+[ext_resource type="Texture2D" uid="uid://cdjc44aucjr77" path="res://graphics/GUI/intro/intro2a.png" id="7_ppcho"]
+[ext_resource type="Texture2D" uid="uid://25kg0lw0bxp0" path="res://graphics/GUI/intro/intro3a.png" id="8_1a4cf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yhgsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mqk6s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cbjhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q36ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b8a2l")
+}, {
+"duration": 1e+06,
+"texture": ExtResource("6_gley3")
+}],
+"loop": true,
+"name": &"intro1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ppcho")
+}],
+"loop": true,
+"name": &"intro2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1a4cf")
+}],
+"loop": true,
+"name": &"intro3",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_3in54")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+top_level = true
+scale = Vector2(0.314052, 0.314052)
+sprite_frames = SubResource("SpriteFrames_yhgsg")
+animation = &"intro3"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -577.0
+offset_top = -325.0
+offset_right = 576.0
+offset_bottom = 325.0
+texture = ExtResource("2_mqk6s")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 323.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_mqk6s")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Title"]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 128.0
+text = "Witchy game, or whatever we're gonna call it. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="play" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_mqk6s")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/play"]
+offset_right = 127.0
+offset_bottom = 128.0
+text = "play"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="options" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_mqk6s")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/options"]
+offset_right = 127.0
+offset_bottom = 128.0
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="quit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_mqk6s")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/quit"]
+offset_right = 127.0
+offset_bottom = 128.0
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Intro" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_mqk6s")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Intro"]
+offset_right = 127.0
+offset_bottom = 128.0
+text = "Intro"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Intro" to="." method="_on_intro_pressed"]
