@@ -13,29 +13,26 @@ size = Vector3(0.25, 0.25, 0.1)
 [node name="DragItem" type="Node3D"]
 script = ExtResource("1_mt1m8")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.136647, 0, 0, 0, 0.136647, 0, 0, 0, 0.249819, 0, 0, 0)
-billboard = 1
-alpha_cut = 1
-texture = ExtResource("2_7ga4k")
-region_rect = Rect2(0, 0, 128, 128)
-
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.134669, 0, 0, 0, 0.134669, 0, 0, 0, 0.25, -0.000990748, -1.49012e-08, 0.000301003)
 
 [node name="Sprite3D3" type="Sprite3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-material_overlay = ExtResource("3_fj2ej")
+transform = Transform3D(0.134669, 0, 0, 0, 0.134669, 0, 0, 0, 0.25, -0.000990748, -1.49012e-08, 0.000301003)
+material_override = ExtResource("3_fj2ej")
 gi_mode = 0
-billboard = 1
+no_depth_test = true
 texture = SubResource("ImageTexture_yumy7")
 region_rect = Rect2(0, 0, 128, 128)
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
+[node name="Sprite3D2" type="Sprite3D" parent="Node3D"]
 transform = Transform3D(0.134669, 0, 0, 0, 0.134669, 0, 0, 0, 0.25, 0, 0, 0.00283116)
-billboard = 1
 alpha_cut = 1
 texture = ExtResource("3_ln4rl")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(0.136647, 0, 0, 0, 0.136647, 0, 0, 0, 0.249819, 0, 0, -0.00379437)
+alpha_cut = 1
+texture = ExtResource("2_7ga4k")
 region_rect = Rect2(0, 0, 128, 128)
 
 [node name="Area3D" type="Area3D" parent="."]

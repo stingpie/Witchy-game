@@ -2,14 +2,14 @@
 
 [ext_resource type="Shader" path="res://graphics/dragItem.gdshader" id="1_tl4ug"]
 [ext_resource type="Texture2D" uid="uid://ynci5nrvwd7w" path="res://graphics/GUI/Potion_Bottle_HOLE_MASK.png" id="2_3p7qq"]
-[ext_resource type="Texture2D" uid="uid://xyijviy5j4ra" path="res://graphics/GUI/fluids/caustic.png" id="3_d2p0r"]
+[ext_resource type="Texture2D" uid="uid://ddwlolecw30cu" path="res://graphics/GUI/fluids/caustic.png" id="3_d2p0r"]
 
 [resource]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_tl4ug")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/main_color = Vector3(1, 0, 0)
-shader_parameter/aux_color = Vector3(1, 1, 1)
+shader_parameter/main_color = null
+shader_parameter/aux_color = null
 shader_parameter/texture_albedo = ExtResource("3_d2p0r")
 shader_parameter/mask = ExtResource("2_3p7qq")

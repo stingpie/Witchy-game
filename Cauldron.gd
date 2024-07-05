@@ -31,7 +31,7 @@ func _on_dropzone_area_entered(area):
 		contents.append(area.get_parent().item)
 		area.get_parent().is_dragged = false
 		area.get_parent().position= Vector3(0,0,0)
-		area.get_parent().get_node("Sprite3D").no_depth_test=false
+		area.get_parent().get_node("Node3D").propagate_call("set_draw_flag", [3, false]) #.no_depth_test=false
 		$AnimatedSprite3D.play("filled")
 	
 	pass # Replace with function body.
@@ -44,13 +44,13 @@ func _on_faucet_input_event(camera, event, position, normal, shape_idx):
 			#dprint(recipe)
 			if(arrays_have_same_content(recipe['ingredients'], contents)):
 				var item = item_schema.instantiate()
-				item.set_item(recipe['result'], load("res://icon.svg"))
+				item.set_item(recipe['result'])#, load("res://icon.svg"))
 				
 				item.cam = cam
 				item.position=(global_position - $"../Bookshelf right/positions/p 1".global_position) 
 				item.position.z=0
-				item.get_node("Sprite3D").position.z=0.5
-				item.get_node("Sprite3D").no_depth_test=true
+				item.get_node("Node3D").position.z=0.5
+				item.get_node("Node3D").propagate_call("set_draw_flag", [3, true])#.no_depth_test=true
 				item.get_node("Area3D/CollisionShape3D").shape.size.z=1
 				
 				
