@@ -8,7 +8,17 @@ const JUMP_VELOCITY = 4.5
 
 const max_speed = 15.0
 
-var inventory = {"wool of bat":1, "wing of howlet":1, "leg of lizard":1}
+var inventory = {"eye of newt":1, 
+			"fenny snake":1, 
+			"toe of frog":1, 
+			"wool of bat":1, 
+			"tongue of dog":1, 
+			"fork of adder":1, 
+			"sting of worm":1, 
+			"leg of lizard":1, 
+			"wing of howlet":1,
+			"blood of baboon":1,
+			"dragon ass":1}
 var HP = 100;
 
 const TimeEvent = preload("res://TimeEvent.gd")

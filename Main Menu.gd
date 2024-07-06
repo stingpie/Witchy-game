@@ -48,5 +48,5 @@ func _on_intro_pressed():
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if event.pressed:
+		if event.pressed and intro_playing>0:
 			intro_playing+=1

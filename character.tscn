@@ -82,7 +82,7 @@ visible = false
 shape = SubResource("CapsuleShape3D_42n0x")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerBody3D"]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 1, 0, 0.107787, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_hpvm1")
 animation = &"running"
