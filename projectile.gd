@@ -22,6 +22,8 @@ func _ready():
 func _physics_process(delta):
 	time_left = max(0, time_left - delta)
 	
+	if(time_left<=lifespan/2 and $"../".get_child_count()>250):
+		queue_free()
 	if(time_left<=0):
 		queue_free()
 	
@@ -48,6 +50,7 @@ func _physics_process(delta):
 				
 				projectile.initial_speed = initial_speed
 				
+				projectile.made_by = made_by if made_by != "player" else "";
 				
 				add_sibling(projectile) # put the projectile into the world. 
 				
@@ -64,6 +67,8 @@ func _physics_process(delta):
 				
 				
 				projectile2.initial_speed = initial_speed
+				
+				projectile2.made_by = made_by if made_by != "player" else "";
 				
 				add_sibling(projectile2)
 				
@@ -143,7 +148,7 @@ func _physics_process(delta):
 
 func _on_area_3d_body_entered(body):
 	
-	if body is CharacterBody3D and body != made_by :
+	if body is CharacterBody3D and body.body_name != made_by :
 		body.damage(damage)
 		queue_free()
 	pass # Replace with function body.

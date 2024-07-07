@@ -9,7 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var HP=100;
 var activate_range=0;
-
+var body_name=""
 
 const animations=["East", "North-East", "North", "North-West", "West", "South-West", "South", "South-East"]
 var num_animations=1

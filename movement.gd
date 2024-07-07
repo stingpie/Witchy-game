@@ -34,6 +34,7 @@ var tags=[]
 
 var paused = false
 
+var body_name="player"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

@@ -18,6 +18,7 @@ var parent
 
 var wand_modifiers=[];
 
+var enemy_name=""
 
 
 var proj_speed = 5.0
@@ -42,7 +43,7 @@ func fire_proj():
 		cool_down = default_reload; ## TODO: make this change with modifiers
 		
 		var projectile = projectile_scene.instantiate() # instantiate a preloaded scene (initialize it)
-		projectile.made_by=$".."
+		projectile.made_by=enemy_name#$".."
 		# calculate the direction the pointer is pointing in
 		var direction = (Vector3(position3D.x, body.position.y, position3D.z) - global_position).normalized()
 		direction.y=0

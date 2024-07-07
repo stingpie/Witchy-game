@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmiq8d8wocifp"]
+[gd_scene load_steps=9 format=3 uid="uid://cmiq8d8wocifp"]
 
 [ext_resource type="PackedScene" uid="uid://dabw2ps645n3k" path="res://character.tscn" id="1_bo3d6"]
 [ext_resource type="PackedScene" uid="uid://c5e1vbsxujqnc" path="res://wall.tscn" id="2_1pria"]
 [ext_resource type="PackedScene" uid="uid://dno6hc6a6t56n" path="res://enemy.tscn" id="3_3lup0"]
+[ext_resource type="PackedScene" uid="uid://dxo5teqqx6wvo" path="res://herb.tscn" id="4_3go8x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5mswi"]
 size = Vector3(10000, 0.1, 10000)
@@ -12,7 +13,7 @@ size = Vector3(10000, 0.1, 10000)
 [sub_resource type="CanvasTexture" id="CanvasTexture_yn6re"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8em5"]
-albedo_color = Color(0, 0.737255, 0.219608, 1)
+albedo_color = Color(0.227451, 0.486275, 0.270588, 1)
 albedo_texture = SubResource("CanvasTexture_yn6re")
 
 [node name="Level1" type="Node3D"]
@@ -1103,3 +1104,45 @@ close = 5.0
 far = 8.0
 activate_range = 100.0
 ai = "hover"
+
+[node name="Herbs" type="Node3D" parent="."]
+
+[node name="Herb" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.068, 0.97969, -27.9114)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Herb2" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.656, 0.97969, -23.2791)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Herb3" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.587, 0.97969, -21.5669)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Herb4" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.2535, 0.97969, -72.0053)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Herb5" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4491, 0.97969, -23.417)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Herb7" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53315, 0.97969, -23.9688)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Herb8" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.80886, 0.97969, -35.6072)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Herb6" parent="Herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2863, 0.97969, -60.8848)
+herb_type = "HP10"
+sprite = "res://graphics/hp-potion.png"

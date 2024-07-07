@@ -50,7 +50,7 @@ func _process(delta):
 		cool_down = default_reload; ## TODO: make this change with modifiers
 		
 		var projectile = projectile_scene.instantiate() # instantiate a preloaded scene (initialize it)
-		projectile.made_by=$".."
+		projectile.made_by="player"
 		# calculate the direction the pointer is pointing in
 		var direction = (Vector3(position3D.x, player_body.position.y, position3D.z) - player_body.position).normalized()
 		# set the velocity of the projectile to the player's vel, plus the direction times speed. 
@@ -74,7 +74,7 @@ func _process(delta):
 		cool_down = default_reload * 2; ## TODO: make this change with modifiers
 		
 		var projectile = projectile_scene.instantiate() # instantiate a preloaded scene (initialize it)
-		projectile.made_by=$".."
+		projectile.made_by="player"
 		# calculate the direction the pointer is pointing in
 		var direction = (Vector3(position3D.x, player_body.position.y, position3D.z) - player_body.position).normalized()
 		# set the velocity of the projectile to the player's vel, plus the direction times speed. 
