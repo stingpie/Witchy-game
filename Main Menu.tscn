@@ -99,6 +99,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_mqk6s")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/play"]
+layout_mode = 0
 offset_right = 127.0
 offset_bottom = 128.0
 text = "play"
@@ -111,6 +112,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_mqk6s")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/options"]
+layout_mode = 0
 offset_right = 127.0
 offset_bottom = 128.0
 text = "Options"
@@ -123,6 +125,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_mqk6s")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/quit"]
+layout_mode = 0
 offset_right = 127.0
 offset_bottom = 128.0
 text = "Quit"
@@ -135,6 +138,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_mqk6s")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Intro"]
+layout_mode = 0
 offset_right = 127.0
 offset_bottom = 128.0
 text = "Intro"

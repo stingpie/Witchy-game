@@ -25,7 +25,7 @@ var proj_speed = 5.0
 func _ready():
 	body = $".."
 	parent = $"../.."
-	projectile_map = $"../../../projectiles"
+	projectile_map = $"../../../../projectiles"
 	projectile_scene = preload("res://projectile.tscn")
 
 	pass # Replace with function body.
@@ -36,7 +36,7 @@ func _process(delta):
 	pass
 	
 func fire_proj():
-	var position3D = $"../../../Player/PlayerBody3D".position
+	var position3D = $"../../../../Player/PlayerBody3D".global_position
 	if  position3D and cool_down <=0: # if the position is valid, and the left mouse button in pressed,
 		
 		cool_down = default_reload; ## TODO: make this change with modifiers
@@ -44,7 +44,7 @@ func fire_proj():
 		var projectile = projectile_scene.instantiate() # instantiate a preloaded scene (initialize it)
 		projectile.made_by=$".."
 		# calculate the direction the pointer is pointing in
-		var direction = (Vector3(position3D.x, body.position.y, position3D.z) - body.position - parent.position).normalized()
+		var direction = (Vector3(position3D.x, body.position.y, position3D.z) - global_position).normalized()
 		direction.y=0
 		# set the velocity of the projectile to the player's vel, plus the direction times speed. 
 		# (Ie, make the projectile move relative to the player)
@@ -53,7 +53,7 @@ func fire_proj():
 		
 		# set the position of the particle at the end of the player's pointer.
 		projectile.position.x = body.position.x + parent.position.x + direction.x * 1.15
-		projectile.position.y = -body.position.y/2 + parent.position.y + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
+		projectile.position.y = body.position.y/2 + parent.position.y + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
 		projectile.position.z = body.position.z + parent.position.z + direction.z * 1.15
 		
 		

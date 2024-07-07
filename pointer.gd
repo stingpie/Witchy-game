@@ -36,7 +36,7 @@ func _process(delta):
 							 cam.project_ray_origin(get_viewport().get_mouse_position()),
 							 cam.project_ray_normal(get_viewport().get_mouse_position()))
 							
-
+	
 	if(position3D): # if the position is valid,
 		# set the rotation of the pointer so that it points to the mouse.
 		rotation.y = 3.141592 / 2 -Vector2(position3D.x, position3D.z).angle_to_point(Vector2(player_body.position.x,player_body.position.z))
@@ -58,9 +58,9 @@ func _process(delta):
 		projectile.velocity = (Vector3(0,0,0) if "abs vel" in wand_modifiers else player_body.velocity) + direction * proj_speed
 		
 		# set the position of the particle at the end of the player's pointer.
-		projectile.position.x = player_body.position.x + direction.x * 1.15
-		projectile.position.y = -player_body.position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
-		projectile.position.z = player_body.position.z + direction.z * 1.15
+		projectile.position.x = player_body.global_position.x + direction.x * 1.15
+		projectile.position.y = player_body.global_position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by 2 to get the correct result.
+		projectile.position.z = player_body.global_position.z + direction.z * 1.15
 		
 		projectile.wand_modifiers = wand_modifiers.duplicate() # apply set modifers to projectile.
 		
@@ -82,9 +82,9 @@ func _process(delta):
 		projectile.velocity = player_body.velocity + direction * proj_speed
 		
 		# set the position of the particle at the end of the player's pointer.
-		projectile.position.x = player_body.position.x + direction.x * 1.15
-		projectile.position.y = -player_body.position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
-		projectile.position.z = player_body.position.z + direction.z * 1.15
+		projectile.position.x = player_body.global_position.x + direction.x * 1.15
+		projectile.position.y = player_body.global_position.y/2 + direction.y * 1.15 # for some reason, player.pos.y is messed up. you have to divide by -2 to get the correct result.
+		projectile.position.z = player_body.global_position.z + direction.z * 1.15
 		
 		projectile.wand_modifiers = wand_modifiers.duplicate() # apply set modifers to projectile.
 		

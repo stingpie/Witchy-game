@@ -8,15 +8,15 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var HP=100;
-
+var activate_range=0;
 
 
 const animations=["East", "North-East", "North", "North-West", "West", "South-West", "South", "South-East"]
 var num_animations=1
 
-var state = "stand"
+var state = "deactivated"
 
-@onready var player = $"../../Player/PlayerBody3D"
+@onready var player = $"../../../Player/PlayerBody3D"
 
 
 var AI = preload("res://GenericAI.gd")
@@ -32,7 +32,11 @@ func _physics_process(delta):
 	# this controls the enemy. I should definitely improve the ai, give a couple
 	# of different behaviors. 
 	
-	
+	var player_dist = (Vector3(player.global_position.x, player.global_position.y, player.global_position.z) - global_position).length()
+	if(state=="deactivated"):
+		if(player_dist<activate_range):
+			state="standing"
+		return
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -42,7 +46,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var player_dist = (Vector3(player.position.x, player.position.y, player.position.z) - position).length()
+	
 	
 	#var direction = (Vector3(player.position.x, player.position.y, player.position.z) - position).normalized()
 	var direction = null

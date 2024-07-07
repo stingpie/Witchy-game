@@ -1,10 +1,13 @@
 extends Node2D
 
-var game_scene = preload("res://testmap.tscn")
-
-
+const GAME_SCENE_PATH ="res://level1.tscn"
+#var game_scene
 
 var intro_playing=0
+
+func _ready():
+	ResourceLoader.load_threaded_request(GAME_SCENE_PATH)
+	print("?")
 
 func _process(delta):
 	
@@ -33,6 +36,7 @@ func _on_options_pressed():
 
 func _on_play_pressed():
 	if(intro_playing==0):
+		var game_scene = ResourceLoader.load_threaded_get(GAME_SCENE_PATH)
 		get_tree().change_scene_to_packed(game_scene)
 	else:
 		intro_playing+=1

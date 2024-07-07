@@ -6,6 +6,8 @@ extends Node3D
 
 @export var close=4.0;
 @export var far = 20.0;
+@export var activate_range = 0.0;
+@export var initial_path_range=10.0;
 @export var ai ="circle"
 
 
@@ -31,4 +33,6 @@ func _ready():
 	$"EnemyBody3D".AI.close = close;
 	$"EnemyBody3D".AI.far = far;
 	$"EnemyBody3D".AI.mode = ai;
+	$"EnemyBody3D".AI.move_range = initial_path_range;
+	$"EnemyBody3D".activate_range=activate_range;
 	

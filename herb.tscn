@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://dxo5teqqx6wvo"]
 
 [ext_resource type="Script" path="res://herb.gd" id="1_4n2kj"]
-[ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="1_qin03"]
 [ext_resource type="Texture2D" uid="uid://b57ltx8ax77bt" path="res://Projectile_Placeholder.png" id="2_bolyu"]
+[ext_resource type="Texture2D" uid="uid://gjoisae2qlia" path="res://graphics/hp-potion.png" id="2_c0nht"]
 
 [sub_resource type="GDScript" id="GDScript_wna60"]
 script/source = "extends Area3D
@@ -17,7 +17,9 @@ var herb_type = \":)\"
 
 func _on_body_entered(body):
 	if body is CharacterBody3D and body.name.substr(0,6) == \"Player\":
-		if(body.inventory.has(herb_type)):
+		if(herb_type.begins_with(\"HP\")):
+			body.damage(-int(herb_type.substr(2)))
+		elif(body.inventory.has(herb_type)):
 			body.inventory[herb_type]+=1
 		else:
 			body.inventory[herb_type] = 1
@@ -85,11 +87,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0259768, 0.00900751, -0.00
 shape = SubResource("BoxShape3D_4ajgg")
 
 [node name="Sprite3D" type="Sprite3D" parent="HerbArea3D"]
-transform = Transform3D(0.00247433, 0.191754, 0, -0.499188, 0.000950472, 0, 0, 0, 1, 0, -0.198634, 0)
-texture = ExtResource("1_qin03")
+transform = Transform3D(0.721486, 0, 0, 0, 0.721486, 0, 0, 0, 1, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_c0nht")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="HerbArea3D"]
 transform = Transform3D(0.196844, 0, 0, 0, 0.196844, 0, 0, 0, 0.196844, 0, 0, 0)
+visible = false
 amount = 40
 visibility_aabb = AABB(-1.83767, -2.30744, -1.04398, 3.67534, 4.61487, 2.08797)
 process_material = SubResource("ParticleProcessMaterial_i6t61")

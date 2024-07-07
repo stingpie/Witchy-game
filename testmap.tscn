@@ -14,11 +14,11 @@ size = Vector3(100, 0.1, 100)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_heq78"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nkymg"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0v7e7"]
 noise = SubResource("FastNoiseLite_heq78")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwupw"]
-albedo_texture = SubResource("NoiseTexture2D_nkymg")
+albedo_texture = SubResource("NoiseTexture2D_0v7e7")
 
 [node name="Testmap" type="Node3D"]
 
@@ -84,8 +84,8 @@ ai = "ambush"
 
 [node name="Herb" parent="." instance=ExtResource("5_dbs7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88468, 1.62556, -4.45713)
-herb_type = "dragon ass"
-sprite = "res://IdleANIMATIONLESS.png"
+herb_type = "HP-10"
+sprite = "res://graphics/hp-potion.png"
 
 [node name="Npc" parent="." instance=ExtResource("6_ntado")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.01021, 0.913975, -1.05627)

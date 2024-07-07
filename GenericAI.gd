@@ -12,19 +12,24 @@ extends Node
 ## 		stay still until player comes within a certain distance. Then, move around quickly.
 
 var mode = "circle"
-var state ="stand"
+var state ="deactivate"
 
 var close=5
 var far = 20
+var move_range = 20
 const curl=5
 
 
 func get_control(Player, Enemy):
 	
-	var player_dist = (Player.position - Enemy.position - Enemy.get_parent().position).length()
+	var player_dist = (Player.global_position - Enemy.global_position).length()
 	
-	var direction = (Player.position - Enemy.position - Enemy.get_parent().position).normalized()
+	var direction = (Player.global_position - Enemy.global_position ).normalized()
 	
+	if(state=="deactivate"):
+		if(player_dist<move_range):
+			state="stand"
+		return {'x':0, 'y':0, 'state':state}
 	
 	if(mode == "close"):
 			
