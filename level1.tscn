@@ -27,7 +27,7 @@ transform = Transform3D(0.974438, 0.0839213, -0.208395, 0.197485, 0.122248, 0.97
 shape = SubResource("BoxShape3D_5mswi")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="StaticBody3D"]
-transform = Transform3D(878.031, 0, 0, 0, 1, 0, 0, 0, 878.031, 0, 0.1, 0)
+transform = Transform3D(878.031, 0, 0, 0, 1, 0, 0, 0, 878.031, 0, -6.05604, 0)
 mesh = SubResource("PlaneMesh_6t3pj")
 material = SubResource("StandardMaterial3D_r8em5")
 
@@ -861,6 +861,51 @@ transform = Transform3D(0.960478, 0, -0.278354, 0, 1, 0, 0.278354, 0, 0.960478, 
 [node name="Wall122" parent="walls" instance=ExtResource("2_1pria")]
 transform = Transform3D(0.970976, 0, 0.239178, 0, 1, 0, -0.239178, 0, 0.970976, 133.423, 0.0390215, 18.7882)
 
+[node name="Wall218" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.690517, 0, 0.723317, 0, 1, 0, -0.723317, 0, -0.690517, 132.014, 0.0390215, 23.567)
+
+[node name="Wall219" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.959663, 0, 0.281152, 0, 1, 0, -0.281152, 0, -0.959663, 140.313, 0.0390215, 28.6651)
+
+[node name="Wall226" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.971669, 0, -0.236346, 0, 1, 0, 0.236346, 0, -0.971669, 149.968, 0.0390215, 28.8514)
+
+[node name="Wall312" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(0.386566, 0, 0.922262, 0, 1, 0, -0.922262, 0, 0.386566, 104.476, 0.0390215, 40.7587)
+
+[node name="Wall334" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.126355, 0, 0.991985, 0, 1, 0, -0.991985, 0, -0.126355, 103.125, 0.0390215, 50.4045)
+
+[node name="Wall335" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.605419, 0, 0.795907, 0, 1, 0, -0.795907, 0, -0.605419, 106.818, 0.0390215, 59.3278)
+
+[node name="Wall336" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.389252, 0, -0.921131, 0, 1, 0, 0.921131, 0, -0.389252, 111.764, 0.0390215, 58.7217)
+
+[node name="Wall337" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(0.123463, 0, -0.992349, 0, 1, 0, 0.992349, 0, 0.123463, 113.143, 0.0390215, 49.0799)
+
+[node name="Wall338" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(0.603097, 0, -0.797668, 0, 1, 0, 0.797668, 0, 0.603097, 109.476, 0.0390215, 40.1458)
+
+[node name="Wall339" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(0.999882, 0, 0.0153583, 0, 1, 0, -0.0153583, 0, 0.999882, 152.555, 0.0390215, 60.488)
+
+[node name="Wall340" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(0.858244, 0, 0.513242, 0, 1, 0, -0.513242, 0, 0.858244, 143.176, 0.0390215, 63.115)
+
+[node name="Wall341" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(0.48664, 0, 0.873602, 0, 1, 0, -0.873602, 0, 0.48664, 136.48, 0.0390215, 70.0741)
+
+[node name="Wall342" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.999923, 0, -0.012444, 0, 1, 0, 0.012444, 0, -0.999923, 139.017, 0.0390215, 74.3622)
+
+[node name="Wall343" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.859736, 0, -0.510738, 0, 1, 0, 0.510738, 0, -0.859736, 148.404, 0.0390215, 71.7626)
+
+[node name="Wall344" parent="walls" instance=ExtResource("2_1pria")]
+transform = Transform3D(-0.489184, 0, -0.87218, 0, 1, 0, 0.87218, 0, -0.489184, 155.12, 0.0390215, 64.823)
+
 [node name="Wall117" parent="walls" instance=ExtResource("2_1pria")]
 transform = Transform3D(0.692622, 0, -0.721301, 0, 1, 0, 0.721301, 0, 0.692622, 160.745, 0.0390215, 22.5058)
 
@@ -1033,6 +1078,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5726, 0.0499992, -60.4632)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1040,6 +1086,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.662, 0.0500031, -74.1453)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1047,6 +1094,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.6736, 0.0500031, -45.6963)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1054,6 +1102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.3831, 0.0500031, -17.9337)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1061,6 +1110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.399, 0.0500031, -86.065)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1068,6 +1118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4727, 0.0500031, -88.0463)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1075,6 +1126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.8615, 0.0500031, -97.5281)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1082,6 +1134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5313, 0.0500069, -64.1502)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1089,13 +1142,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8718, 0.0500069, -72.5628)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
+
+[node name="Enemy17" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.479, 0.050005, -85.1465)
+close = 5.0
+far = 8.0
+activate_range = 100.0
+ai = "ambush"
+
+[node name="Enemy18" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.571, 0.050005, -81.1447)
+close = 5.0
+far = 8.0
+activate_range = 100.0
+ai = "ambush"
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.852, 0.0500069, -49.3893)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource("3_3lup0")]
@@ -1103,7 +1172,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9296, 0.0500069, -34.3529)
 close = 5.0
 far = 8.0
 activate_range = 100.0
+initial_path_range = 40.0
 ai = "hover"
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.251, 0.0500069, 49.7552)
+spells = ["cyclone"]
+close = 10.0
+far = 8.0
+activate_range = 100.0
+initial_path_range = 50.0
+speed = 10
+
+[node name="Enemy19" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.367, 0.0500069, 80.5112)
+spells = ["cyclone"]
+far = 8.0
+activate_range = 100.0
+ai = "ambush"
+
+[node name="Enemy20" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.419, 0.0500069, 82.8497)
+spells = ["cyclone"]
+far = 8.0
+activate_range = 100.0
+ai = "ambush"
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.196, 0.0500069, 55.1096)
+spells = ["cyclone"]
+close = 10.0
+far = 8.0
+activate_range = 100.0
+initial_path_range = 50.0
+speed = 10
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.824, 0.0500069, 42.1394)
+spells = ["cyclone"]
+close = 10.0
+far = 8.0
+activate_range = 100.0
+initial_path_range = 50.0
+speed = 10
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.043, 0.0500069, 31.6376)
+spells = ["cyclone"]
+close = 10.0
+far = 8.0
+activate_range = 100.0
+initial_path_range = 50.0
+speed = 10
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource("3_3lup0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.116, 0.0500069, 55.5485)
+spells = ["cyclone"]
+close = 10.0
+far = 8.0
+activate_range = 100.0
+initial_path_range = 50.0
+speed = 10
 
 [node name="Herbs" type="Node3D" parent="."]
 

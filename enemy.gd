@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -31,6 +31,10 @@ func damage(amount):
 func _physics_process(delta):
 	# this controls the enemy. I should definitely improve the ai, give a couple
 	# of different behaviors. 
+	
+	if(delta>0.016666667):
+		print("LAG!!")
+	
 	
 	var player_dist = (Vector3(player.global_position.x, player.global_position.y, player.global_position.z) - global_position).length()
 	if(state=="deactivated"):

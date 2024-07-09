@@ -19,10 +19,22 @@ func _ready():
 	projectile_scene = preload("res://projectile.tscn")
 	wind_dir = velocity.normalized()
 
+func projectile_is_laggin():
+	return 1093284094
+
+
 func _physics_process(delta):
+	
+	if( $"../".get_child_count()>750):
+		queue_free()
+	
 	time_left = max(0, time_left - delta)
 	
+	projectile_is_laggin()
+
 	if(time_left<=lifespan/2 and $"../".get_child_count()>250):
+		queue_free()
+	elif(time_left<=lifespan/4 and $"../".get_child_count()>500):
 		queue_free()
 	if(time_left<=0):
 		queue_free()
@@ -150,5 +162,7 @@ func _on_area_3d_body_entered(body):
 	
 	if body is CharacterBody3D and body.body_name != made_by :
 		body.damage(damage)
+		queue_free()
+	elif body is StaticBody3D:
 		queue_free()
 	pass # Replace with function body.

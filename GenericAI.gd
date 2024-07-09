@@ -17,7 +17,7 @@ var state ="deactivate"
 var close=5
 var far = 20
 var move_range = 20
-const curl=5
+const curl=1
 
 
 func get_control(Player, Enemy):

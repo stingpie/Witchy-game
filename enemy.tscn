@@ -32,6 +32,5 @@ script = ExtResource("11_ef6eu")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="EnemyBody3D"]
 billboard = 1
-no_depth_test = true
 alpha_cut = 1
 sprite_frames = SubResource("SpriteFrames_b6ep7")

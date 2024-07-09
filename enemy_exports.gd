@@ -11,6 +11,7 @@ extends Node3D
 @export var activate_range = 0.0;
 @export var initial_path_range=10.0;
 @export var ai ="circle"
+@export var speed=5; 
 
 
 #const directions8 = ["North", "North-East", "East", "South-East", "South", "South-West", "West", "North-West"]
@@ -39,3 +40,4 @@ func _ready():
 	$"EnemyBody3D".activate_range=activate_range;
 	$EnemyBody3D/Node3D.enemy_name = enemy_name
 	$EnemyBody3D.body_name = enemy_name
+	$EnemyBody3D.SPEED = speed
