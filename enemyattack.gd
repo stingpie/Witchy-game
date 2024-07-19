@@ -26,7 +26,8 @@ var proj_speed = 5.0
 func _ready():
 	body = $".."
 	parent = $"../.."
-	projectile_map = $"../../../../projectiles"
+	projectile_map = get_tree().root.get_child(0).get_node("projectiles")
+	print(projectile_map)
 	projectile_scene = preload("res://projectile.tscn")
 
 	pass # Replace with function body.
@@ -37,7 +38,7 @@ func _process(delta):
 	pass
 	
 func fire_proj():
-	var position3D = $"../../../../Player/PlayerBody3D".global_position
+	var position3D = get_tree().root.get_child(0).get_node("Player/PlayerBody3D").global_position
 	if  position3D and cool_down <=0: # if the position is valid, and the left mouse button in pressed,
 		
 		cool_down = default_reload; ## TODO: make this change with modifiers

@@ -154,7 +154,24 @@ func _physics_process(delta):
 		if modifier == "accelerate":
 			velocity = initial_speed * velocity.normalized() * (2 ** ((lifespan - time_left)))
 				
-
+		if modifier.substr(0,5) == "boost":
+			initial_speed *= 1.5
+			velocity = initial_speed * velocity.normalized()
+			wand_modifiers.erase(modifier)
+			
+		if modifier == "homing":
+			var enemies =$"../../Enemies".get_children()
+			var enemy=enemies.pick_random()
+			for i in range(len(enemies)):
+				print(i)
+				if((self.global_position - enemy.global_position).length()> (self.global_position - enemies[i].global_position).length()):
+					enemy = enemies[i]
+					print((self.global_position - enemy.global_position).length(), " ", i)
+			if(self.global_position - enemy.global_position).length()>0.001:
+				print("			",(self.global_position - enemy.global_position).length())
+				var d = delta * 20
+				velocity = velocity*(0.9**d) + (1-(0.9**d))*initial_speed * -(self.global_position - enemy.global_position).normalized()
+			
 	move_and_slide()
 
 

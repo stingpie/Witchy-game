@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var HP=100;
-var activate_range=0;
+var activate_range=100;
 var body_name=""
 
 const animations=["East", "North-East", "North", "North-West", "West", "South-West", "South", "South-East"]
@@ -16,7 +16,7 @@ var num_animations=1
 
 var state = "deactivated"
 
-@onready var player = $"../../../Player/PlayerBody3D"
+@onready var player = get_tree().root.get_child(0).get_node("Player/PlayerBody3D")
 
 
 var AI = preload("res://GenericAI.gd")

@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=3 uid="uid://uadcmf80u01k"]
+
+[ext_resource type="PackedScene" uid="uid://c5e1vbsxujqnc" path="res://wall.tscn" id="1_wmg10"]
+[ext_resource type="Script" path="res://prefabs/Spawner.gd" id="2_dbrce"]
+[ext_resource type="PackedScene" uid="uid://dno6hc6a6t56n" path="res://enemy.tscn" id="3_mevlj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fi6pt"]
+size = Vector3(96, 0.1, 96)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vbj63"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yn6re"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7lvs"]
+albedo_color = Color(0.227451, 0.486275, 0.270588, 1)
+albedo_texture = SubResource("CanvasTexture_yn6re")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dr4ll"]
+height = 0.1
+radius = 35.0
+
+[node name="WallsOctagon" type="Node3D"]
+
+[node name="walls" type="Node3D" parent="."]
+
+[node name="Wall" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.5, -43)
+
+[node name="Wall25" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.5, -33)
+
+[node name="Wall26" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.98773, 0.600494, -43.064)
+
+[node name="Wall27" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.98773, 0.600494, -33.064)
+
+[node name="Wall4" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.5, 33)
+
+[node name="Wall28" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.5, 43)
+
+[node name="Wall29" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.98773, 0.600494, 32.936)
+
+[node name="Wall30" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.98773, 0.600494, 42.936)
+
+[node name="Wall7" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 42.9741, 0.5, 4.96187)
+
+[node name="Wall31" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 32.9741, 0.5, 4.96187)
+
+[node name="Wall32" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 43.0381, 0.600494, -5.02586)
+
+[node name="Wall33" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 33.0381, 0.600494, -5.02586)
+
+[node name="Wall10" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -33.0259, 0.5, 4.96187)
+
+[node name="Wall34" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -43.0259, 0.5, 4.96187)
+
+[node name="Wall35" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32.9619, 0.600494, -5.02586)
+
+[node name="Wall36" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -42.9619, 0.600494, -5.02586)
+
+[node name="Wall2" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, -36.2148)
+
+[node name="Wall3" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, -36.2148)
+
+[node name="Wall5" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 36.2152)
+
+[node name="Wall6" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 36.2152)
+
+[node name="Wall8" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.215, 0.5, 10.0002)
+
+[node name="Wall9" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.215, 0.5, -9.99975)
+
+[node name="Wall11" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.215, 0.5, 10.0002)
+
+[node name="Wall12" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.215, 0.5, -9.99976)
+
+[node name="Wall13" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 25.6079, 0.5, -25.6076)
+
+[node name="Wall14" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 32.6789, 0.5, -18.5366)
+
+[node name="Wall15" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 18.5368, 0.5, -32.6787)
+
+[node name="Wall16" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -25.6079, 0.5, 25.6081)
+
+[node name="Wall17" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -18.5368, 0.5, 32.6792)
+
+[node name="Wall18" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -32.6789, 0.5, 18.5371)
+
+[node name="Wall19" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 25.6079, 0.5, 25.6081)
+
+[node name="Wall20" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 18.5368, 0.5, 32.6792)
+
+[node name="Wall21" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 32.6789, 0.5, 18.5371)
+
+[node name="Wall22" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -25.6079, 0.5, -25.6076)
+
+[node name="Wall23" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -32.6789, 0.5, -18.5366)
+
+[node name="Wall24" parent="walls" instance=ExtResource("1_wmg10")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -18.5368, 0.5, -32.6787)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fi6pt")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="StaticBody3D"]
+transform = Transform3D(70, 0, 0, 0, 0.08, 0, 0, 0, 70, 0, -6.05604, 0)
+mesh = SubResource("PlaneMesh_vbj63")
+material = SubResource("StandardMaterial3D_h7lvs")
+
+[node name="Enemy Spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7097, 0)
+script = ExtResource("2_dbrce")
+area = SubResource("CylinderShape3D_dr4ll")
+nodes = Array[PackedScene]([ExtResource("3_mevlj")])
+number = 6
