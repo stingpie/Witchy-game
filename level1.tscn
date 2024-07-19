@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmiq8d8wocifp"]
+[gd_scene load_steps=10 format=3 uid="uid://cmiq8d8wocifp"]
 
 [ext_resource type="PackedScene" uid="uid://dabw2ps645n3k" path="res://character.tscn" id="1_bo3d6"]
 [ext_resource type="PackedScene" uid="uid://wim6tygryj3n" path="res://level1-walls.tscn" id="1_yigps"]
 [ext_resource type="PackedScene" uid="uid://dno6hc6a6t56n" path="res://enemy.tscn" id="3_3lup0"]
 [ext_resource type="PackedScene" uid="uid://dxo5teqqx6wvo" path="res://herb.tscn" id="4_3go8x"]
+[ext_resource type="PackedScene" uid="uid://bd7tuciruduky" path="res://npc.tscn" id="5_mrph0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5mswi"]
 size = Vector3(10000, 0.1, 10000)
@@ -42,6 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72085, 0)
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5726, 0.0499992, -60.4632)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -50,6 +52,7 @@ ai = "hover"
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.662, 0.0500031, -74.1453)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -58,6 +61,7 @@ ai = "hover"
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.6736, 0.0500031, -45.6963)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -66,6 +70,7 @@ ai = "hover"
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.3831, 0.0500031, -17.9337)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -74,6 +79,7 @@ ai = "hover"
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.399, 0.0500031, -86.065)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -82,6 +88,7 @@ ai = "hover"
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4727, 0.0500031, -88.0463)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -90,6 +97,7 @@ ai = "hover"
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.8615, 0.0500031, -97.5281)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -98,6 +106,7 @@ ai = "hover"
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5313, 0.0500069, -64.1502)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -106,6 +115,7 @@ ai = "hover"
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8718, 0.0500069, -72.5628)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -114,6 +124,7 @@ ai = "hover"
 
 [node name="Enemy17" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.479, 0.050005, -85.1465)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -121,6 +132,7 @@ ai = "ambush"
 
 [node name="Enemy18" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.571, 0.050005, -81.1447)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -128,6 +140,7 @@ ai = "ambush"
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.852, 0.0500069, -49.3893)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -136,6 +149,7 @@ ai = "hover"
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource("3_3lup0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9296, 0.0500069, -34.3529)
+sprite_dir = "res://graphics/enemy/caster-shrub"
 close = 5.0
 far = 8.0
 activate_range = 100.0
@@ -302,3 +316,13 @@ sprite = "res://graphics/Viatealth_Ore1.png"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.318, 0, -0.956181)
 herb_type = "HP10"
 sprite = "res://graphics/Viatealth_Ore1.png"
+
+[node name="Herb21" parent="herbs" instance=ExtResource("4_3go8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7691, 9.90927e-07, 30.0116)
+herb_type = "dragon ass"
+sprite = "res://graphics/hp-potion.png"
+
+[node name="Npc" parent="." instance=ExtResource("5_mrph0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4497, 0.0500002, 3.53887)
+file = "res://dialog/complex-dialog.json"
+sprite = "res://graphics/NPC/guy-standing.png"

@@ -17,9 +17,8 @@ var inventory = {"eye of newt":1,
 			"sting of worm":1, 
 			"leg of lizard":1, 
 			"wing of howlet":1,
-			"blood of baboon":1,
-			"dragon ass":1}
-var HP = 10000;
+			"blood of baboon":1}
+var HP = 100;
 
 const TimeEvent = preload("res://TimeEvent.gd")
 
