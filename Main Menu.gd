@@ -10,6 +10,8 @@ func _ready():
 	print("?")
 
 func _process(delta):
+	if Input.is_action_just_pressed("left click"):
+		$MenuClickSFX.play()
 	
 	if(intro_playing>0):
 		if(intro_playing>=4):

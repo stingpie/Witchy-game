@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbg4xdyiup42o"]
+[gd_scene load_steps=8 format=3 uid="uid://bbg4xdyiup42o"]
 
 [ext_resource type="Script" path="res://dragItem.gd" id="1_mt1m8"]
 [ext_resource type="Texture2D" uid="uid://b7isqngg4c6bp" path="res://graphics/GUI/Potion_Bottle_Empty.png" id="2_7ga4k"]
 [ext_resource type="Material" uid="uid://ds7hw0b333tb4" path="res://graphics/dragItem.tres" id="3_fj2ej"]
 [ext_resource type="Texture2D" uid="uid://c5c45w5eg1j8e" path="res://graphics/GUI/Potion_Bottle_HOLE.png" id="3_ln4rl"]
+[ext_resource type="AudioStream" uid="uid://c1smha016y3j" path="res://sounds/GlassTink.wav" id="5_ijxct"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_yumy7"]
 
@@ -39,5 +40,8 @@ region_rect = Rect2(0, 0, 128, 128)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_xtudd")
+
+[node name="GlassTink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ijxct")
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

@@ -65,7 +65,7 @@ func _process(delta):
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event.is_action_pressed("left click"):
-		
+		$GlassTink.play()
 		$Node3D.position.z=0
 		#$Sprite3D.no_depth_test=true
 		$Node3D.propagate_call("set_draw_flag", [3, true])

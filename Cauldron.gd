@@ -33,12 +33,14 @@ func _on_dropzone_area_entered(area):
 		area.get_parent().position= Vector3(0,0,0)
 		area.get_parent().get_node("Node3D").propagate_call("set_draw_flag", [3, false]) #.no_depth_test=false
 		$AnimatedSprite3D.play("filled")
+		$WaterBubbling.play()
 	
 	pass # Replace with function body.
 
 
 func _on_faucet_input_event(camera, event, position, normal, shape_idx):
 	if event.is_action_pressed("left click"):
+		$GlassTink.play()
 		#print(contents)
 		for recipe in recipies:
 			#dprint(recipe)
@@ -52,7 +54,6 @@ func _on_faucet_input_event(camera, event, position, normal, shape_idx):
 				item.get_node("Node3D").position.z=0.5
 				item.get_node("Node3D").propagate_call("set_draw_flag", [3, true])#.no_depth_test=true
 				item.get_node("Area3D/CollisionShape3D").shape.size.z=1
-				
 				
 				$"../Bookshelf right/positions/p 1".add_child(item)
 				pass

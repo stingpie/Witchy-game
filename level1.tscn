@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmiq8d8wocifp"]
+[gd_scene load_steps=11 format=3 uid="uid://cmiq8d8wocifp"]
 
 [ext_resource type="PackedScene" uid="uid://dabw2ps645n3k" path="res://character.tscn" id="1_bo3d6"]
 [ext_resource type="PackedScene" uid="uid://wim6tygryj3n" path="res://level1-walls.tscn" id="1_yigps"]
 [ext_resource type="PackedScene" uid="uid://dno6hc6a6t56n" path="res://enemy.tscn" id="3_3lup0"]
 [ext_resource type="PackedScene" uid="uid://dxo5teqqx6wvo" path="res://herb.tscn" id="4_3go8x"]
 [ext_resource type="PackedScene" uid="uid://bd7tuciruduky" path="res://npc.tscn" id="5_mrph0"]
+[ext_resource type="AudioStream" uid="uid://l652atyvj668" path="res://sounds/SampleCombat.wav" id="6_bi8ld"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5mswi"]
 size = Vector3(10000, 0.1, 10000)
@@ -20,7 +21,7 @@ albedo_texture = SubResource("CanvasTexture_yn6re")
 [node name="Level1" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.974438, 0.0839213, -0.208395, 0.197485, 0.122248, 0.972654, 0.107102, -0.988945, 0.102549, 0, 6.31474, 0)
+transform = Transform3D(0.974438, 0.0839211, -0.208395, 0.197485, 0.122248, 0.972654, 0.107102, -0.988945, 0.10255, 0, 6.31474, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -326,3 +327,9 @@ sprite = "res://graphics/hp-potion.png"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4497, 0.0500002, 3.53887)
 file = "res://dialog/complex-dialog.json"
 sprite = "res://graphics/NPC/guy-standing.png"
+
+[node name="CombatMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bi8ld")
+autoplay = true
+
+[node name="CombatMusicTimer" type="Timer" parent="."]

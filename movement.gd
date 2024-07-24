@@ -88,6 +88,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("open inventory"):
 		# toggle inventory screen
+		
 		if not in_inventory:
 			brew_scene.visible = true;
 			brew_scene.propagate_call("set_process", [true])
@@ -97,12 +98,15 @@ func _physics_process(delta):
 				if(node.name != $"../".name):
 					node.propagate_call("set_process", [false])
 					node.propagate_call("set_physics_process", [false])
-					node.visible = false;
+					if node.has_method("set_visible"): # Only set visible if the node supports it
+						node.visible = false
 			$Node3D.visible=false
 			$Node3D.set_process(false)
 			brew_scene.get_node("Camera3D").make_current()
 			$AnimatedSprite3D.visible=false
 			$Camera3D/CombatGui.visible=false
+			
+			#$CombatMusic.stop()
 			
 			in_inventory = true
 			
@@ -121,12 +125,15 @@ func _physics_process(delta):
 				if(node.name != $"../".name):
 					node.propagate_call("set_process", [true])
 					node.propagate_call("set_physics_process", [true])
-					node.visible = true;
+					if node.has_method("set_visible"): # Only set visible if the node supports it
+						node.visible = true
 			$Node3D.visible=true
 			$Node3D.set_process(true)
 			$Camera3D.make_current()
 			$AnimatedSprite3D.visible=true
 			$Camera3D/CombatGui.visible=true
+			
+			#$CombatMusic.play()
 			
 			for i in range(4):
 				$"Camera3D/CombatGui/Node2D".spells[i]=[]

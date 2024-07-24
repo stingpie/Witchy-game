@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dabw2ps645n3k"]
+[gd_scene load_steps=15 format=3 uid="uid://dabw2ps645n3k"]
 
 [ext_resource type="Texture2D" uid="uid://bcw6c6pgu48ss" path="res://icon.svg" id="1_0tb7a"]
 [ext_resource type="Script" path="res://movement.gd" id="1_x5kph"]
 [ext_resource type="Script" path="res://pointer.gd" id="2_3qlpv"]
+[ext_resource type="AudioStream" uid="uid://c7sb4amwp8k3r" path="res://sounds/Shimmer.ogg" id="3_47r4v"]
 [ext_resource type="Texture2D" uid="uid://ckudgrb1r40ie" path="res://IdleANIMATIONLESS.png" id="3_78xml"]
 [ext_resource type="Script" path="res://PlayerCam.gd" id="3_u4hvg"]
 [ext_resource type="PackedScene" uid="uid://co0ymoicsxym" path="res://combat gui.tscn" id="3_uyay5"]
 [ext_resource type="PackedScene" uid="uid://c61qjnabmocoy" path="res://inventory.tscn" id="4_ft4qm"]
+[ext_resource type="AudioStream" uid="uid://cgpohhgji52en" path="res://sounds/WandFiringMedium.wav" id="4_rjc5a"]
 [ext_resource type="Texture2D" uid="uid://baee6tjuarvfr" path="res://WalkingANIMATIONLESS.png" id="5_4k8fh"]
 [ext_resource type="PackedScene" uid="uid://bfi7a5jldulvr" path="res://dialog/dialog.tscn" id="5_57eed"]
 
@@ -66,6 +68,12 @@ mesh = SubResource("PrismMesh_pqt6d")
 outer_radius = 0.625
 sides = 16
 ring_sides = 16
+
+[node name="LeftWand" type="AudioStreamPlayer" parent="PlayerBody3D/Node3D"]
+stream = ExtResource("3_47r4v")
+
+[node name="RightWand" type="AudioStreamPlayer" parent="PlayerBody3D/Node3D"]
+stream = ExtResource("4_rjc5a")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.557629, 0.83009, 0, -0.83009, 0.557629, 0, 8.07377, 3.96424)
